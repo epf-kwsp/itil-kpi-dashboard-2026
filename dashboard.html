@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>KWSP | ITIL KPI Dashboard 2026</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        /* ==========================================
+           DASHBOARD SETTINGS
+        ========================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .dashboard-content {
+            padding-bottom: 35px;
+        }
+
+        /* ==========================================
+           HERO BANNER
+        ========================================== */
+
+        .dashboard-hero {
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+
+            min-height: 210px;
+            padding: 38px 42px;
+            margin-bottom: 25px;
+
+            border-radius: 22px;
+
+            background: linear-gradient(
+                135deg,
+                #123578 0%,
+                #174a9d 55%,
+                #2463c5 100%
+            );
+
+            box-shadow:
+                0 12px 35px rgba(23, 59, 130, 0.18);
+
+            color: white;
+        }
+
+        .dashboard-hero::before {
+            content: "";
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+            right: -80px;
+            top: -130px;
+
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+        }
+
+        .dashboard-hero::after {
+            content: "";
+            position: absolute;
+
+            width: 190px;
+            height: 190px;
+            right: 100px;
+            bottom: -130px;
+
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .dashboard-hero-copy {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+
+        .dashboard-hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 14px;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+
+            color: #dce9ff;
+        }
+
+        .dashboard-hero h2 {
+            margin: 0 0 12px;
+
+            font-size: 30px;
+            line-height: 1.25;
+            color: white;
+        }
+
+        .dashboard-hero p {
+            max-width: 570px;
+            margin: 0;
+
+            color: rgba(255,255,255,0.82);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .dashboard-hero-year {
+            position: relative;
+            z-index: 2;
+
+            min-width: 135px;
+            padding: 20px 24px;
+
+            text-align: center;
+
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.11);
+        }
+
+        .dashboard-hero-year i {
+            display: block;
+            margin-bottom: 8px;
+
+            font-size: 20px;
+            color: #dbe8ff;
+        }
+
+        .dashboard-hero-year span {
+            display: block;
+            margin-bottom: 3px;
+
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            color: #cbdcff;
+        }
+
+        .dashboard-hero-year strong {
+            font-size: 25px;
+            color: white;
+        }
+
+        /* ==========================================
+           SUMMARY CARDS
+        ========================================== */
+
+        .dashboard-summary {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .summary-card {
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            gap: 17px;
+
+            min-height: 110px;
+            padding: 22px;
+
+            border: 1px solid #e3e9f3;
+            border-radius: 18px;
+
+            background: white;
+
+            box-shadow:
+                0 7px 20px rgba(15,43,89,0.06);
+
+            transition: 0.2s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 28px rgba(15,43,89,0.10);
+        }
+
+        .summary-card::after {
+            content: "";
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+            right: -35px;
+            bottom: -35px;
+
+            border-radius: 50%;
+            background: #f4f7fc;
+        }
+
+        .summary-icon {
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 54px;
+            height: 54px;
+
+            border-radius: 15px;
+            font-size: 20px;
+        }
+
+        .summary-blue {
+            color: #173b82;
+            background: #eaf0ff;
+        }
+
+        .summary-green {
+            color: #15945d;
+            background: #eaf9f1;
+        }
+
+        .summary-red {
+            color: #d43b4d;
+            background: #fff0f2;
+        }
+
+        .summary-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .summary-content small {
+            display: block;
+            margin-bottom: 4px;
+
+            color: #77839c;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .summary-content strong {
+            display: block;
+            margin-bottom: 4px;
+
+            color: #173b82;
+            font-size: 26px;
+            line-height: 1.2;
+        }
+
+        .summary-content span {
+            color: #8a96ac;
+            font-size: 10px;
+        }
+
+        /* ==========================================
+           SECTION HEADING
+        ========================================== */
+
+        .dashboard-section {
+            margin-top: 5px;
+        }
+
+        .dashboard-section-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+
+            margin-bottom: 17px;
+        }
+
+        .dashboard-section-head h3 {
+            margin: 0 0 5px;
+
+            color: #173b82;
+            font-size: 18px;
+        }
+
+        .dashboard-section-head p {
+            margin: 0;
+
+            color: #7d899e;
+            font-size: 12px;
+        }
+
+        .dashboard-section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 12px;
+            border-radius: 10px;
+
+            background: #eef3fc;
+            color: #173b82;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* ==========================================
+           OVERALL ITIL KPI MODULE
+        ========================================== */
+
+        .dashboard-modules {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .dashboard-card {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+
+            min-height: 225px;
+            padding: 30px;
+
+            overflow: hidden;
+            text-decoration: none;
+
+            border: 1px solid #e1e7f0;
+            border-left: 5px solid #203b84;
+            border-radius: 20px;
+
+            background: white;
+
+            box-shadow:
+                0 8px 22px rgba(15,43,89,0.06);
+
+            transition:
+                transform 0.22s ease,
+                box-shadow 0.22s ease,
+                border-color 0.22s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbd9ef;
+
+            box-shadow:
+                0 15px 35px rgba(15,43,89,0.11);
+        }
+
+        .dashboard-card::after {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -65px;
+            bottom: -80px;
+
+            border-radius: 50%;
+            background: #f5f7fb;
+        }
+
+        .dashboard-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .module-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 15px;
+            font-size: 21px;
+        }
+
+        .module-blue {
+            color: #173b82;
+            background: #e9efff;
+        }
+
+        .module-tag {
+            padding: 8px 12px;
+            border-radius: 9px;
+
+            background: #f4f6fa;
+            color: #7c879b;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+        }
+
+        .dashboard-card h3 {
+            position: relative;
+            z-index: 2;
+
+            margin: 0 0 10px;
+
+            color: #173b82;
+            font-size: 20px;
+        }
+
+        .dashboard-card p {
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+
+            margin: 0 0 25px;
+            max-width: 750px;
+
+            color: #7c879b;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .dashboard-card-footer {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            padding-top: 18px;
+            border-top: 1px solid #edf0f5;
+        }
+
+        .dashboard-card-info {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #8b96aa;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .dashboard-card-open {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            color: #173b82;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .dashboard-card-open i {
+            transition: transform 0.2s ease;
+        }
+
+        .dashboard-card:hover
+        .dashboard-card-open i {
+            transform: translateX(4px);
+        }
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 1000px) {
+
+            .dashboard-summary {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .dashboard-hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 28px;
+            }
+
+            .dashboard-hero-year {
+                width: 100%;
+            }
+
+            .dashboard-hero h2 {
+                font-size: 25px;
+            }
+
+            .dashboard-section-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dashboard-card {
+                padding: 22px;
+            }
+
+            .dashboard-card-footer {
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+        <div class="brand">
+
+            <img
+                src="images/kwsp-logo.png"
+                alt="KWSP EPF Logo"
+                class="kwsp-logo"
+            >
+
+            <div class="brand-title">
+
+                <h2>ITIL KPI</h2>
+
+                <p>Dashboard 2026</p>
+
+            </div>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav>
+
+            <a
+                href="dashboard.html"
+                class="nav-btn active">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+            <a
+                href="overall.html"
+                class="nav-btn">
+
+                <i class="fa-solid fa-list-check"></i>
+
+                Overall ITIL KPI
+
+            </a>
+
+        </nav>
+
+        <!-- SIDEBAR FOOTER -->
+        <div class="side-foot">
+
+            <b>KWSP / EPF</b>
+
+            <span>
+                ITIL KPI Monitoring
+            </span>
+
+        </div>
+
+    </aside>
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main>
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    ITIL KPI Dashboard
+                </h1>
+
+                <p>
+                    Performance Monitoring 2026
+                </p>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <!-- YEAR -->
+                <div class="year">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    2026
+
+                </div>
+
+                <!-- ADMIN -->
+                <div class="administrator">
+
+                    <div class="admin-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ITIL KPI Portal
+                        </strong>
+
+                        <span>
+                            KWSP / EPF
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ==========================================
+             DASHBOARD CONTENT
+        =========================================== -->
+
+        <section class="content dashboard-content">
+
+            <!-- ======================================
+                 HERO BANNER
+            ======================================= -->
+
+            <div class="dashboard-hero">
+
+                <div class="dashboard-hero-copy">
+
+                    <span class="dashboard-hero-label">
+
+                        <i class="fa-solid fa-chart-pie"></i>
+
+                        ITIL PERFORMANCE OVERVIEW
+
+                    </span>
+
+                    <h2>
+                        ITIL KPI Performance 2026
+                    </h2>
+
+                    <p>
+                        Centralised monitoring of ITIL
+                        Key Performance Indicators,
+                        reporting frequency, targets
+                        and stretch targets for KWSP / EPF.
+                    </p>
+
+                </div>
+
+                <div class="dashboard-hero-year">
+
+                    <i class="fa-regular fa-calendar-check"></i>
+
+                    <span>
+                        REPORTING YEAR
+                    </span>
+
+                    <strong>
+                        2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <!-- ======================================
+                 SUMMARY CARDS
+            ======================================= -->
+
+            <div class="dashboard-summary">
+
+                <!-- ITIL PROCESSES -->
+                <div class="summary-card">
+
+                    <div class="summary-icon summary-blue">
+
+                        <i class="fa-solid fa-layer-group"></i>
+
+                    </div>
+
+                    <div class="summary-content">
+
+                        <small>
+                            ITIL Processes
+                        </small>
+
+                        <strong id="statProcess">
+                            14
+                        </strong>
+
+                        <span>
+                            Overall ITIL KPI 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- REPORTING PERIOD -->
+                <div class="summary-card">
+
+                    <div class="summary-icon summary-green">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                    </div>
+
+                    <div class="summary-content">
+
+                        <small>
+                            Reporting Period
+                        </small>
+
+                        <strong>
+                            JAN - DEC
+                        </strong>
+
+                        <span>
+                            Full-year KPI monitoring
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- INCIDENT KPI -->
+                <div class="summary-card">
+
+                    <div class="summary-icon summary-red">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    </div>
+
+                    <div class="summary-content">
+
+                        <small>
+                            Incident KPIs
+                        </small>
+
+                        <strong>
+                            3
+                        </strong>
+
+                        <span>
+                            Incident Management
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ======================================
+                 MODULE SECTION
+            ======================================= -->
+
+            <div class="dashboard-section">
+
+                <div class="dashboard-section-head">
+
+                    <div>
+
+                        <h3>
+                            ITIL KPI Monitoring
+                        </h3>
+
+                        <p>
+                            Select the module to view
+                            KPI information and targets.
+                        </p>
+
+                    </div>
+
+                    <span class="dashboard-section-tag">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Reporting Year 2026
+
+                    </span>
+
+                </div>
+
+                <!-- ==================================
+                     OVERALL ITIL KPI ONLY
+                =================================== -->
+
+                <div class="dashboard-modules">
+
+                    <a
+                        href="overall.html"
+                        class="dashboard-card">
+
+                        <!-- CARD TOP -->
+                        <div class="dashboard-card-top">
+
+                            <div class="module-icon module-blue">
+
+                                <i class="fa-solid fa-list-check"></i>
+
+                            </div>
+
+                            <span class="module-tag">
+                                KPI REGISTER
+                            </span>
+
+                        </div>
+
+                        <!-- CARD TITLE -->
+                        <h3>
+                            Overall ITIL KPI
+                        </h3>
+
+                        <!-- CARD DESCRIPTION -->
+                        <p>
+                            View all ITIL processes,
+                            KPI definitions, reporting frequency,
+                            targets and stretch targets
+                            for 2026.
+                        </p>
+
+                        <!-- CARD FOOTER -->
+                        <div class="dashboard-card-footer">
+
+                            <span class="dashboard-card-info">
+
+                                <i class="fa-solid fa-layer-group"></i>
+
+                                14 ITIL Processes
+
+                            </span>
+
+                            <span class="dashboard-card-open">
+
+                                View KPI
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             FOOTER
+        =========================================== -->
+
+        <footer>
+
+            © 2026 KWSP / EPF —
+            ITIL KPI Dashboard
+
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

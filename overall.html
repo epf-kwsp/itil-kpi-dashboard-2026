@@ -1,0 +1,1075 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>KWSP | Overall ITIL KPI 2026</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        /* ==========================================
+           GLOBAL SETTINGS
+        ========================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        body {
+            background: #f4f7fc;
+            font-family: Arial, sans-serif;
+        }
+
+        /* REMOVE SIDEBAR */
+        .sidebar {
+            display: none !important;
+        }
+
+        .app {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-height: 100vh;
+        }
+
+        .app > main {
+            margin-left: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-height: 100vh;
+        }
+
+        /* ==========================================
+           TOP BAR
+        ========================================== */
+
+        .topbar {
+            width: 100%;
+            min-height: 125px;
+            height: auto;
+
+            padding: 20px 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            background: #ffffff;
+            border-bottom: 3px solid #ed2939;
+        }
+
+        .topbar-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        .topbar-title h1 {
+            margin: 5px 0 0;
+            color: #203b84;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .topbar-title p {
+            margin: 0;
+            color: #71809b;
+            font-size: 12px;
+        }
+
+        /* BACK TO DASHBOARD */
+
+        .back-dashboard {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 10px 16px;
+            margin-bottom: 8px;
+
+            background: #eef3ff;
+            color: #203b84;
+
+            border: 1px solid #dbe4f6;
+            border-radius: 10px;
+
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+
+            transition: all 0.2s ease;
+        }
+
+        .back-dashboard:hover {
+            background: #203b84;
+            color: white;
+            transform: translateX(-2px);
+        }
+
+        /* ==========================================
+           MAIN CONTENT
+        ========================================== */
+
+        .content {
+            width: 100%;
+            max-width: 100%;
+            padding: 30px 35px 45px;
+        }
+
+        #processList,
+        #processDetail {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ==========================================
+           OVERALL HERO
+        ========================================== */
+
+        .overall-hero {
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+
+            padding: 35px 38px;
+            margin-bottom: 28px;
+
+            border-radius: 20px;
+
+            background: linear-gradient(
+                135deg,
+                #142e6d 0%,
+                #204895 60%,
+                #2e61b7 100%
+            );
+
+            box-shadow:
+                0 12px 30px rgba(23,59,130,0.15);
+
+            color: white;
+        }
+
+        .overall-hero::after {
+            content: "";
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            right: -75px;
+            top: -130px;
+
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .overall-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 13px;
+
+            color: #dce8ff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+        }
+
+        .overall-hero h2 {
+            margin: 0 0 12px;
+
+            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .overall-hero p {
+            margin: 0;
+            max-width: 650px;
+
+            color: #e0eaff;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .hero-year {
+            position: relative;
+            z-index: 2;
+
+            min-width: 120px;
+            padding: 20px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+        }
+
+        .hero-year i {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .hero-year strong {
+            display: block;
+            font-size: 26px;
+            color: white;
+        }
+
+        .hero-year span {
+            font-size: 10px;
+            color: #dce8ff;
+        }
+
+        /* ==========================================
+           PROCESS DIRECTORY
+        ========================================== */
+
+        .overall-section-heading {
+            margin-bottom: 20px;
+        }
+
+        .overall-section-heading h2 {
+            margin: 0 0 7px;
+            color: #203b84;
+            font-size: 21px;
+        }
+
+        .overall-section-heading p {
+            margin: 0;
+            color: #7b879b;
+            font-size: 12px;
+        }
+
+        .section-tools {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            padding: 22px 25px;
+            margin-bottom: 20px;
+
+            background: #ffffff;
+            border: 1px solid #dfe6f2;
+            border-radius: 16px;
+
+            box-shadow:
+                0 5px 18px rgba(20,48,100,0.05);
+        }
+
+        .section-tools h3 {
+            margin: 0 0 6px;
+            color: #203b84;
+            font-size: 16px;
+        }
+
+        .section-tools p {
+            margin: 0;
+            color: #7d899e;
+            font-size: 12px;
+        }
+
+        .section-tools .search {
+            width: 320px;
+            max-width: 100%;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0,1fr));
+            gap: 20px;
+        }
+
+        .process-grid > * {
+            min-width: 0;
+        }
+
+        /* ==========================================
+           INCIDENT MANAGEMENT DETAIL
+        ========================================== */
+
+        #processDetail {
+            width: 100%;
+            padding-bottom: 35px;
+        }
+
+        /* BACK TO PROCESS */
+
+        #processDetail .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 25px;
+            padding: 11px 17px;
+
+            background: #ffffff;
+            color: #203b84;
+
+            border: 1px solid #dce5f4;
+            border-radius: 10px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            box-shadow:
+                0 4px 12px rgba(20,48,100,0.05);
+
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        #processDetail .back:hover {
+            background: #203b84;
+            color: white;
+            transform: translateX(-2px);
+        }
+
+        /* HIDE DUPLICATE TITLE */
+
+        #processDetail > .heading {
+            display: none !important;
+        }
+
+        /* ==========================================
+           PROCESS INFORMATION CARD
+        ========================================== */
+
+        #processDetail .kpi-process-banner {
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+
+            width: 100%;
+            min-height: 165px;
+
+            margin-bottom: 25px;
+            padding: 30px 35px;
+
+            background: #ffffff !important;
+            background-image: none !important;
+
+            border: 1px solid #dce5f4;
+            border-left: 5px solid #203b84;
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 28px rgba(20,48,100,0.07);
+        }
+
+        /* LEFT CONTENT */
+
+        #processDetail .kpi-process-left {
+            display: flex !important;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+            gap: 22px;
+        }
+
+        /* ICON */
+
+        #processDetail .kpi-process-icon {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+
+            background: #eaf0ff !important;
+            color: #203b84 !important;
+
+            border: none;
+            border-radius: 17px;
+        }
+
+        #processDetail .kpi-process-icon i {
+            font-size: 27px;
+            color: #203b84 !important;
+        }
+
+        /* PROCESS LABEL */
+
+        #processDetail .process-label {
+            display: block;
+            margin-bottom: 8px;
+
+            color: #d52e42 !important;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        /* PROCESS TITLE */
+
+        #processDetail #bannerProcessTitle {
+            margin: 0 0 7px;
+
+            color: #203b84 !important;
+
+            font-size: 27px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        #processDetail .kpi-process-left p {
+            margin: 0;
+            color: #71809b !important;
+            font-size: 13px;
+        }
+
+        /* ==========================================
+           KPI COUNT CARD
+        ========================================== */
+
+        #processDetail .kpi-count {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 135px;
+            min-height: 100px;
+
+            padding: 18px 25px;
+
+            background: #eaf1ff !important;
+            background-image: none !important;
+
+            border: 1px solid #dbe6fb;
+            border-radius: 15px;
+
+            box-shadow: none !important;
+        }
+
+        #processDetail .kpi-count strong {
+            color: #203b84 !important;
+
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        #processDetail .kpi-count span {
+            margin-top: 5px;
+
+            color: #203b84 !important;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================
+           KPI REGISTER PANEL
+        ========================================== */
+
+        #processDetail .kpi-detail-panel {
+            width: 100%;
+            max-width: 100%;
+            margin-top: 0;
+
+            overflow: hidden;
+
+            background: #ffffff;
+            border: 1px solid #dce5f4;
+            border-radius: 17px;
+
+            box-shadow:
+                0 8px 28px rgba(20,48,100,0.06);
+        }
+
+        #processDetail .panel-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            padding: 24px 28px;
+            background: #ffffff;
+        }
+
+        #processDetail .panel-head h3 {
+            margin: 0 0 7px;
+
+            color: #203b84;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        #processDetail .panel-head p {
+            margin: 0;
+            color: #71809b;
+            font-size: 12px;
+        }
+
+        /* ==========================================
+           KPI SEARCH
+        ========================================== */
+
+        #processDetail .panel-head .search {
+            width: 320px;
+            max-width: 100%;
+        }
+
+        /* ==========================================
+           KPI TABLE
+        ========================================== */
+
+        #processDetail .kpi-table-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        #processDetail .kpi-detail-table {
+            width: 100%;
+            min-width: 950px;
+            border-collapse: collapse;
+        }
+
+        #processDetail .kpi-detail-table thead {
+            background: #203b84;
+        }
+
+        #processDetail .kpi-detail-table th {
+            background: #203b84;
+            color: white;
+
+            padding: 17px 18px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        #processDetail .kpi-detail-table td {
+            padding: 17px 18px;
+            border-bottom: 1px solid #e8edf5;
+        }
+
+        #processDetail .kpi-detail-table tbody tr:hover {
+            background: #f5f8ff;
+        }
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 1050px) {
+
+            .process-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0,1fr));
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 20px;
+                flex-wrap: wrap;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .overall-hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 28px;
+            }
+
+            .overall-hero h2 {
+                font-size: 24px;
+            }
+
+            .hero-year {
+                width: 100%;
+            }
+
+            .section-tools {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .section-tools .search {
+                width: 100%;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #processDetail .kpi-process-banner {
+                padding: 22px;
+                gap: 20px;
+            }
+
+            #processDetail .kpi-process-left {
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            #processDetail .kpi-process-icon {
+                width: 52px;
+                height: 52px;
+                min-width: 52px;
+            }
+
+            #processDetail #bannerProcessTitle {
+                font-size: 20px;
+            }
+
+            #processDetail .kpi-count {
+                width: 100%;
+            }
+
+            #processDetail .panel-head {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 20px;
+            }
+
+            #processDetail .panel-head .search {
+                width: 100%;
+            }
+
+            #processDetail .kpi-detail-table {
+                min-width: 800px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <main>
+
+        <!-- =====================================
+             TOP BAR
+        ====================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-title">
+
+                <!-- BACK TO DASHBOARD -->
+
+                <a href="dashboard.html"
+                   class="back-dashboard">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to Dashboard
+
+                </a>
+
+                <h1>
+                    Overall ITIL KPI 2026
+                </h1>
+
+                <p>
+                    ITIL KPI Register
+                </p>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <!-- YEAR -->
+
+                <div class="year">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span>2026</span>
+
+                </div>
+
+                <!-- ADMIN -->
+
+                <div class="administrator">
+
+                    <div class="admin-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ITIL KPI Portal
+                        </strong>
+
+                        <span>
+                            KWSP / EPF
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =====================================
+             PAGE CONTENT
+        ====================================== -->
+
+        <section class="content">
+
+            <!-- =================================
+                 PROCESS LIST
+            ================================== -->
+
+            <div id="processList">
+
+                <!-- OVERALL HERO -->
+
+                <div class="overall-hero">
+
+                    <div class="overall-hero-content">
+
+                        <span class="hero-label">
+
+                            <i class="fa-solid fa-layer-group"></i>
+
+                            ITIL PERFORMANCE MANAGEMENT
+
+                        </span>
+
+                        <h2>
+                            KPI Register &amp; Process Overview
+                        </h2>
+
+                        <p>
+                            Explore ITIL processes, Key Performance
+                            Indicators, reporting frequency, targets
+                            and stretch targets for 2026.
+                        </p>
+
+                    </div>
+
+                    <div class="hero-year">
+
+                        <i class="fa-regular fa-calendar-check"></i>
+
+                        <strong>2026</strong>
+
+                        <span>
+                            REPORTING YEAR
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- SECTION HEADING -->
+
+                <div class="overall-section-heading">
+
+                    <h2>
+                        ITIL Process Directory
+                    </h2>
+
+                    <p>
+                        Select an ITIL process to view its KPI details.
+                    </p>
+
+                </div>
+
+                <!-- PROCESS SEARCH -->
+
+                <div class="section-tools">
+
+                    <div>
+
+                        <h3>
+                            ITIL Process
+                        </h3>
+
+                        <p>
+                            Search or select a process to view its KPI.
+                        </p>
+
+                    </div>
+
+                    <label class="search">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="processSearch"
+                            placeholder="Search ITIL Process..."
+                            autocomplete="off"
+                        >
+
+                    </label>
+
+                </div>
+
+                <!-- PROCESS CARDS -->
+
+                <div
+                    id="processGrid"
+                    class="process-grid">
+                </div>
+
+            </div>
+
+            <!-- =================================
+                 KPI DETAIL
+            ================================== -->
+
+            <div
+                id="processDetail"
+                class="process-detail">
+
+                <!-- BACK TO PROCESS LIST -->
+
+                <button
+                    type="button"
+                    id="backBtn"
+                    class="back">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to ITIL Process
+
+                </button>
+
+                <!-- ORIGINAL HEADING -->
+                <!-- Hidden visually to avoid duplicate title -->
+                <!-- IDs retained for JavaScript -->
+
+                <div class="heading">
+
+                    <span class="eyebrow">
+                        KPI DETAILS
+                    </span>
+
+                    <h2 id="processTitle">
+                        Incident Management
+                    </h2>
+
+                    <p id="processCount">
+                        3 KPI Group(s)
+                    </p>
+
+                </div>
+
+                <!-- =================================
+                     PROCESS INFORMATION CARD
+                ================================== -->
+
+                <div class="kpi-process-banner">
+
+                    <div class="kpi-process-left">
+
+                        <!-- PROCESS ICON -->
+
+                        <div class="kpi-process-icon">
+
+                            <i
+                                id="detailProcessIcon"
+                                class="fa-solid fa-triangle-exclamation">
+                            </i>
+
+                        </div>
+
+                        <!-- PROCESS NAME -->
+
+                        <div>
+
+                            <span class="process-label">
+                                ITIL PROCESS
+                            </span>
+
+                            <h2 id="bannerProcessTitle">
+                                Incident Management
+                            </h2>
+
+                            <p>
+                                Overall ITIL KPI 2026
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- KPI COUNT -->
+
+                    <div class="kpi-count">
+
+                        <strong id="detailKpiCount">
+                            3
+                        </strong>
+
+                        <span>
+                            KPI GROUPS
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- =================================
+                     KPI REGISTER PANEL
+                ================================== -->
+
+                <div class="panel kpi-detail-panel">
+
+                    <!-- PANEL HEADER -->
+
+                    <div class="panel-head">
+
+                        <div>
+
+                            <h3>
+                                KPI Register
+                            </h3>
+
+                            <p>
+                                Overall ITIL KPI 2026
+                            </p>
+
+                        </div>
+
+                        <!-- SEARCH KPI -->
+
+                        <label class="search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="text"
+                                id="kpiSearch"
+                                placeholder="Search KPI..."
+                                autocomplete="off"
+                            >
+
+                        </label>
+
+                    </div>
+
+                    <!-- =================================
+                         KPI TABLE
+                    ================================== -->
+
+                    <div class="kpi-table-wrap">
+
+                        <table class="kpi-detail-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th class="col-number">
+                                        No.
+                                    </th>
+
+                                    <th class="col-kpi">
+                                        ITIL Process &amp; KPI 2026
+                                    </th>
+
+                                    <th class="col-frequency">
+                                        Report Frequency
+                                    </th>
+
+                                    <th class="col-target">
+                                        Target
+                                    </th>
+
+                                    <th class="col-stretch">
+                                        Stretch Target
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <!-- DATA FROM JAVASCRIPT -->
+
+                            <tbody id="kpiBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer>
+            © 2026 KWSP / EPF — ITIL KPI Dashboard
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
