@@ -1422,14 +1422,8 @@ const PROCESS_DATA = [
         "frequency": "1 time on DR Procedures",
         "target": "1 time on DR Procedures",
         "stretch": "1 time on DR Procedure"
-      }
-    ]
-  },
-  {
-    "name": "Data Resiliency",
-    "icon": "fa-database",
-    "count": 2,
-    "rows": [
+      },
+    
       {
         "no": "5",
         "kpi": "Average percentage Backup jobs success rate",
