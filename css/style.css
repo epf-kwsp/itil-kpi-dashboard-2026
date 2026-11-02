@@ -5292,4 +5292,57 @@ main {
     text-align: left !important;
     margin-left: 0 !important;
 }
+/* Buang kotak belakang frequency, target, stretch target */
+.frequency-badge,
+.target-badge,
+.stretch-badge,
+.kpi-frequency,
+.kpi-target,
+.kpi-stretch,
+td .badge {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    min-width: auto !important;
+    height: auto !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+}
 
+/* ==========================================
+   REMOVE ALL KPI VALUE BACKGROUNDS
+========================================== */
+
+/* Monthly / Bi-Annually */
+#processDetail .frequency-badge,
+
+/* Target: 95%, 90%, 50% */
+#processDetail .target-value,
+
+/* Stretch Target: 99%, 92%, 60% */
+#processDetail .stretch-value {
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+
+    display: inline !important;
+
+    color: #000000 !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+}
