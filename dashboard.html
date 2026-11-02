@@ -9,14 +9,19 @@
 
     <title>KWSP | ITIL KPI Dashboard 2026</title>
 
-    <!-- Existing project CSS -->
+    <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Font Awesome -->
+    <!-- FONT AWESOME -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
+
+        /* ==========================================
+           GENERAL SETTINGS
+        ========================================== */
+
         * {
             box-sizing: border-box;
         }
@@ -25,7 +30,9 @@
             padding-bottom: 35px;
         }
 
-        /* HERO BANNER */
+        /* ==========================================
+           HERO BANNER
+        ========================================== */
 
         .dashboard-hero {
             position: relative;
@@ -38,14 +45,17 @@
             padding: 38px 42px;
             margin-bottom: 25px;
             border-radius: 22px;
+
             background: linear-gradient(
                 135deg,
                 #123578 0%,
                 #174a9d 55%,
                 #2463c5 100%
             );
-            box-shadow: 0 12px 35px
-                rgba(23, 59, 130, 0.18);
+
+            box-shadow:
+                0 12px 35px rgba(23,59,130,0.18);
+
             color: white;
         }
 
@@ -84,14 +94,20 @@
             color: white;
         }
 
+        /* ==========================================
+           REPORTING YEAR IN HERO
+        ========================================== */
+
         .dashboard-hero-year {
             position: relative;
             z-index: 2;
             min-width: 135px;
             padding: 20px 24px;
             text-align: center;
-            border: 1px solid
-                rgba(255,255,255,0.18);
+
+            border:
+                1px solid rgba(255,255,255,0.18);
+
             border-radius: 18px;
             background: rgba(255,255,255,0.11);
         }
@@ -117,29 +133,65 @@
             color: white;
         }
 
-        /* YEAR DROPDOWN */
+        /* ==========================================
+           YEAR DROPDOWN
+           WHOLE BOX CLICKABLE
+        ========================================== */
 
-        .year-selector {
+        .topbar .year.year-selector {
+            position: relative;
+
             display: inline-flex;
             align-items: center;
-            gap: 9px;
+            justify-content: center;
+
+            gap: 10px;
+
+            min-width: 106px;
+            min-height: 38px;
+
             padding: 10px 13px;
+
             border: 1px solid #dbe4f4;
             border-radius: 10px;
+
             background: #f2f5fc;
             color: #173b82;
+
+            cursor: pointer;
         }
 
-        .year-selector select {
-            appearance: none;
-            border: none;
-            outline: none;
-            background: transparent;
+        .year-selector > i {
+            font-size: 12px;
             color: #173b82;
+            pointer-events: none;
+        }
+
+        .year-selector #selectedYearLabel {
             font-family: Arial, sans-serif;
             font-size: 12px;
             font-weight: 700;
+            color: #173b82;
+            pointer-events: none;
+        }
+
+        /* Cover the entire box with select */
+
+        .year-selector select {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            margin: 0;
+            padding: 0;
+
+            opacity: 0;
+
             cursor: pointer;
+            z-index: 3;
         }
 
         .year-selector .fa-chevron-down {
@@ -147,12 +199,21 @@
             pointer-events: none;
         }
 
-        /* SUMMARY CARDS */
+        .year-selector:focus-within {
+            outline: 2px solid #2463c5;
+            outline-offset: 2px;
+        }
+
+        /* ==========================================
+           SUMMARY CARDS
+        ========================================== */
 
         .dashboard-summary {
             display: grid;
+
             grid-template-columns:
                 repeat(2, minmax(0, 1fr));
+
             gap: 18px;
             margin-bottom: 28px;
         }
@@ -160,25 +221,43 @@
         .summary-card {
             position: relative;
             overflow: hidden;
+
             display: flex;
             align-items: center;
+
             gap: 17px;
+
             min-height: 110px;
             padding: 22px;
+
             border: 1px solid #e3e9f3;
             border-radius: 18px;
+
             background: white;
-            box-shadow: 0 7px 20px
-                rgba(15,43,89,0.06);
+
+            box-shadow:
+                0 7px 20px rgba(15,43,89,0.06);
+
+            transition: 0.2s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 28px rgba(15,43,89,0.10);
         }
 
         .summary-icon {
             flex-shrink: 0;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             width: 54px;
             height: 54px;
+
             border-radius: 15px;
             font-size: 20px;
         }
@@ -196,7 +275,9 @@
         .summary-content small {
             display: block;
             margin-bottom: 4px;
+
             color: #77839c;
+
             font-size: 11px;
             font-weight: 600;
         }
@@ -204,8 +285,11 @@
         .summary-content strong {
             display: block;
             margin-bottom: 4px;
+
             color: #173b82;
+
             font-size: 26px;
+            line-height: 1.2;
         }
 
         .summary-content span {
@@ -213,7 +297,9 @@
             font-size: 10px;
         }
 
-        /* KPI REGISTER CARD */
+        /* ==========================================
+           KPI REGISTER CARD
+        ========================================== */
 
         .dashboard-modules {
             display: grid;
@@ -223,31 +309,44 @@
 
         .dashboard-card {
             position: relative;
+
             display: flex;
             flex-direction: column;
+
             min-height: 225px;
             padding: 30px;
+
             overflow: hidden;
             text-decoration: none;
+
             border: 1px solid #e1e7f0;
             border-left: 5px solid #203b84;
+
             border-radius: 20px;
             background: white;
-            box-shadow: 0 8px 22px
-                rgba(15,43,89,0.06);
-            transition: 0.2s ease;
+
+            box-shadow:
+                0 8px 22px rgba(15,43,89,0.06);
+
+            transition:
+                transform 0.22s ease,
+                box-shadow 0.22s ease,
+                border-color 0.22s ease;
         }
 
         .dashboard-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 15px 35px
-                rgba(15,43,89,0.11);
+            border-color: #cbd9ef;
+
+            box-shadow:
+                0 15px 35px rgba(15,43,89,0.11);
         }
 
         .dashboard-card-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             margin-bottom: 20px;
         }
 
@@ -255,8 +354,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
             width: 55px;
             height: 55px;
+
             border-radius: 15px;
             font-size: 21px;
         }
@@ -268,55 +369,88 @@
 
         .module-tag {
             padding: 8px 12px;
+
             border-radius: 9px;
             background: #f4f6fa;
+
             color: #7c879b;
+
             font-size: 10px;
             font-weight: 800;
+            letter-spacing: 0.8px;
         }
 
         .dashboard-card h3 {
+            position: relative;
+            z-index: 2;
+
             margin: 0 0 10px;
+
             color: #173b82;
             font-size: 20px;
         }
 
         .dashboard-card p {
+            position: relative;
+            z-index: 2;
+
             flex-grow: 1;
+
             margin: 0 0 25px;
+
             color: #7c879b;
             font-size: 13px;
             line-height: 1.7;
         }
 
         .dashboard-card-footer {
+            position: relative;
+            z-index: 2;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 15px;
+
             padding-top: 18px;
             border-top: 1px solid #edf0f5;
         }
 
         .dashboard-card-info {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 7px;
+
             color: #8b96aa;
+
             font-size: 11px;
             font-weight: 600;
         }
 
         .dashboard-card-open {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 9px;
+
             color: #173b82;
+
             font-size: 12px;
             font-weight: 800;
         }
 
-        /* NO DATA PAGE */
+        .dashboard-card-open i {
+            transition: transform 0.2s ease;
+        }
+
+        .dashboard-card:hover
+        .dashboard-card-open i {
+            transform: translateX(4px);
+        }
+
+        /* ==========================================
+           NO DATA AVAILABLE PAGE
+        ========================================== */
 
         #dashboard2026[hidden],
         #noYearData[hidden] {
@@ -326,27 +460,34 @@
         .no-year-data {
             margin: 35px;
             padding: 80px 25px;
+
             background: white;
+
             border: 1px solid #e1e7f0;
             border-radius: 18px;
+
             text-align: center;
         }
 
         .no-year-data > i {
             display: block;
+
             margin-bottom: 20px;
+
             font-size: 46px;
             color: #94a3b8;
         }
 
         .no-year-data h2 {
             color: #173b82;
+
             font-size: 23px;
             margin-bottom: 10px;
         }
 
         .no-year-data p {
             color: #64748b;
+
             font-size: 13px;
             margin-bottom: 24px;
         }
@@ -354,9 +495,12 @@
         .no-year-data button {
             border: none;
             border-radius: 9px;
+
             padding: 12px 22px;
+
             background: #173b82;
             color: white;
+
             font-weight: 700;
             cursor: pointer;
         }
@@ -365,15 +509,20 @@
             background: #2454ad;
         }
 
-        /* RESPONSIVE */
+        /* ==========================================
+           RESPONSIVE DESIGN
+        ========================================== */
 
         @media (max-width: 1000px) {
+
             .dashboard-summary {
                 grid-template-columns: 1fr;
             }
+
         }
 
         @media (max-width: 700px) {
+
             .dashboard-hero {
                 flex-direction: column;
                 align-items: flex-start;
@@ -400,15 +549,20 @@
                 margin: 18px;
                 padding: 55px 20px;
             }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- SIDEBAR -->
+    <!-- ==========================================
+         SIDEBAR
+    ========================================== -->
 
     <aside class="sidebar">
 
@@ -421,52 +575,76 @@
             >
 
             <div class="brand-title">
-                <h2>ITIL Dashboard</h2>
-                <p>Performance Monitoring</p>
+
+                <h2>ITIL KPI</h2>
+
+                <p>Dashboard 2026</p>
+
             </div>
 
         </div>
 
+        <!-- NAVIGATION -->
+
         <nav>
 
-            <a href="dashboard.html"
-               class="nav-btn active">
+            <a
+                href="dashboard.html"
+                class="nav-btn active"
+            >
 
                 <i class="fa-solid fa-house"></i>
+
                 Dashboard
 
             </a>
 
-            <a href="overall.html"
-               class="nav-btn">
+            <a
+                href="overall.html"
+                class="nav-btn"
+            >
 
                 <i class="fa-solid fa-list-check"></i>
+
                 ITIL KPI Register 2026
 
             </a>
 
         </nav>
 
+        <!-- SIDEBAR FOOTER -->
+
         <div class="side-foot">
+
             <b>KWSP / EPF</b>
+
             <span>ITIL KPI Monitoring</span>
+
         </div>
 
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- ==========================================
+         MAIN CONTENT
+    ========================================== -->
 
     <main>
 
-        <!-- TOP BAR -->
+        <!-- ======================================
+             TOP BAR
+        ====================================== -->
 
         <header class="topbar">
 
             <div>
-                <h1>Performance Overview<h1>
+
+                <h1>Peformance Overview</h1>
+
             </div>
 
-            <!-- SELECT REPORTING YEAR -->
+            <!-- ==================================
+                 CLICKABLE YEAR SELECTOR
+            ================================== -->
 
             <div class="topbar-right">
 
@@ -474,10 +652,19 @@
 
                     <i class="fa-regular fa-calendar"></i>
 
+                    <!-- YEAR DISPLAY -->
+
+                    <span id="selectedYearLabel">
+                        2026
+                    </span>
+
+                    <!-- FULL BOX CLICKABLE SELECT -->
+
                     <select
                         id="yearSelect"
                         aria-label="Select reporting year"
                     >
+
                         <option value="2026" selected>
                             2026
                         </option>
@@ -485,6 +672,7 @@
                         <option value="2027">
                             2027
                         </option>
+
                     </select>
 
                     <i class="fa-solid fa-chevron-down"></i>
@@ -495,11 +683,15 @@
 
         </header>
 
-        <!-- NO DATA MESSAGE FOR 2027 -->
+        <!-- ======================================
+             NO DATA MESSAGE FOR 2027
+        ====================================== -->
 
-        <section id="noYearData"
-                 class="no-year-data"
-                 hidden>
+        <section
+            id="noYearData"
+            class="no-year-data"
+            hidden
+        >
 
             <i class="fa-regular fa-calendar-xmark"></i>
 
@@ -516,12 +708,16 @@
                 type="button"
                 id="backTo2026"
             >
+
                 View 2026 Dashboard
+
             </button>
 
         </section>
 
-        <!-- DASHBOARD 2026 -->
+        <!-- ======================================
+             DASHBOARD 2026
+        ====================================== -->
 
         <section
             id="dashboard2026"
@@ -535,10 +731,12 @@
                 <div class="dashboard-hero-copy">
 
                     <h2>
-                        ITIL Performance 2026
+                        ITIL KPI Performance 2026
                     </h2>
 
                 </div>
+
+                <!-- REPORTING YEAR -->
 
                 <div class="dashboard-hero-year">
 
@@ -552,7 +750,9 @@
 
             </div>
 
-            <!-- SUMMARY CARDS -->
+            <!-- ==================================
+                 SUMMARY CARDS
+            ================================== -->
 
             <div class="dashboard-summary">
 
@@ -568,11 +768,17 @@
 
                     <div class="summary-content">
 
-                        <small>ITIL Processes</small>
+                        <small>
+                            ITIL Processes
+                        </small>
 
-                        <strong id="statProcess">15</strong>
+                        <strong id="statProcess">
+                            15
+                        </strong>
 
-                      
+                        <span>
+                            ITIL KPI Register 2026
+                        </span>
 
                     </div>
 
@@ -590,11 +796,17 @@
 
                     <div class="summary-content">
 
-                        <small>Reporting Period</small>
+                        <small>
+                            Reporting Period
+                        </small>
 
-                        <strong>JAN - DEC</strong>
+                        <strong>
+                            JAN - DEC
+                        </strong>
 
-                        
+                        <span>
+                            Full-year KPI monitoring
+                        </span>
 
                     </div>
 
@@ -602,7 +814,9 @@
 
             </div>
 
-            <!-- ITIL KPI REGISTER MODULE -->
+            <!-- ==================================
+                 KPI REGISTER MODULE
+            ================================== -->
 
             <div class="dashboard-modules">
 
@@ -610,6 +824,8 @@
                     href="overall.html"
                     class="dashboard-card"
                 >
+
+                    <!-- CARD TOP -->
 
                     <div class="dashboard-card-top">
 
@@ -625,11 +841,20 @@
 
                     </div>
 
-                    <h3>Process Register</h3>
+                    <!-- CARD CONTENT -->
+
+                    <h3>
+                        ITIL KPI Register 2026
+                    </h3>
 
                     <p>
-                       View and monitor registered processes
+                        View all ITIL processes,
+                        KPI definitions, reporting
+                        frequency, targets and
+                        stretch targets for 2026.
                     </p>
+
+                    <!-- CARD FOOTER -->
 
                     <div class="dashboard-card-footer">
 
@@ -657,80 +882,115 @@
 
         </section>
 
-        <!-- FOOTER -->
+        <!-- ======================================
+             FOOTER
+        ====================================== -->
 
         <footer>
+
             © 2026 KWSP / EPF —
             ITIL KPI Dashboard
+
         </footer>
 
     </main>
 
 </div>
 
-<!-- EXISTING DATA AND SCRIPT -->
+<!-- ==========================================
+     EXISTING JAVASCRIPT FILES
+========================================== -->
 
 <script src="js/data.js"></script>
 <script src="js/script.js"></script>
 
-<!-- YEAR SELECTION FUNCTION -->
+<!-- ==========================================
+     YEAR SELECTION FUNCTION
+========================================== -->
 
 <script>
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
 
-        const yearSelect =
-            document.getElementById("yearSelect");
+document.addEventListener("DOMContentLoaded", function () {
 
-        const dashboard =
-            document.getElementById("dashboard2026");
+    const yearSelect =
+        document.getElementById("yearSelect");
 
-        const noYearData =
-            document.getElementById("noYearData");
+    const selectedYearLabel =
+        document.getElementById("selectedYearLabel");
 
-        const noYearTitle =
-            document.getElementById("noYearTitle");
+    const dashboard =
+        document.getElementById("dashboard2026");
 
-        const backButton =
-            document.getElementById("backTo2026");
+    const noYearData =
+        document.getElementById("noYearData");
 
-        // Display dashboard only if year has data
-        function showSelectedYear(year) {
+    const noYearTitle =
+        document.getElementById("noYearTitle");
 
-            const hasData = year === "2026";
+    const backButton =
+        document.getElementById("backTo2026");
 
-            dashboard.hidden = !hasData;
-            noYearData.hidden = hasData;
+    /* ======================================
+       SHOW SELECTED YEAR
+    ====================================== */
 
-            if (!hasData) {
-                noYearTitle.textContent =
-                    "No KPI Data Available for " + year;
-            }
+    function showSelectedYear(year) {
+
+        // Update year shown in the box
+
+        selectedYearLabel.textContent = year;
+
+        // Data currently available for 2026 only
+
+        const hasData = year === "2026";
+
+        // Show or hide dashboard
+
+        dashboard.hidden = !hasData;
+
+        // Show or hide no-data message
+
+        noYearData.hidden = hasData;
+
+        if (!hasData) {
+
+            noYearTitle.textContent =
+                "No KPI Data Available for " + year;
+
         }
 
-        // Dropdown selection
-        yearSelect.addEventListener(
-            "change",
-            function () {
-                showSelectedYear(yearSelect.value);
-            }
-        );
+    }
 
-        // Return to 2026
-        backButton.addEventListener(
-            "click",
-            function () {
-                yearSelect.value = "2026";
-                showSelectedYear("2026");
-            }
-        );
+    /* ======================================
+       CHANGE YEAR USING DROPDOWN
+    ====================================== */
 
-        // Initial page display
+    yearSelect.addEventListener("change", function () {
+
         showSelectedYear(yearSelect.value);
 
-    }
-);
+    });
+
+    /* ======================================
+       RETURN TO 2026 DASHBOARD
+    ====================================== */
+
+    backButton.addEventListener("click", function () {
+
+        yearSelect.value = "2026";
+
+        showSelectedYear("2026");
+
+    });
+
+    /* ======================================
+       INITIAL DISPLAY
+    ====================================== */
+
+    showSelectedYear(yearSelect.value);
+
+});
+
 </script>
 
 </body>
