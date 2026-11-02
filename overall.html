@@ -7,9 +7,9 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>KWSP | Overall ITIL KPI 2026</title>
+    <title>KWSP | ITIL KPI Register 2026</title>
 
-    <!-- MAIN CSS -->
+    <!-- PROJECT CSS -->
     <link rel="stylesheet" href="css/style.css">
 
     <!-- FONT AWESOME -->
@@ -19,7 +19,7 @@
     <style>
 
         /* ==========================================
-           GLOBAL SETTINGS
+           GENERAL SETTINGS
         ========================================== */
 
         * {
@@ -33,170 +33,34 @@
         }
 
         body {
-            background: #f4f7fc;
             font-family: Arial, sans-serif;
+            background: #f4f7fc;
             color: #203b84;
         }
 
         /* ==========================================
-           MAIN LAYOUT
+           FULL SCREEN WITHOUT SIDEBAR
         ========================================== */
 
         .app {
-            display: flex !important;
-            width: 100%;
+            display: block !important;
+            width: 100% !important;
             min-height: 100vh;
         }
-
-        /* ==========================================
-           LEFT SIDEBAR
-        ========================================== */
 
         .app > .sidebar {
-            display: flex !important;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 263px;
-            height: 100vh;
-            background: #20366f;
-            color: white;
-            z-index: 100;
-            overflow-y: auto;
-        }
-
-        /* LOGO SECTION */
-
-        .sidebar .brand {
-            display: block;
-            padding: 28px 23px 18px;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .sidebar .kwsp-logo {
-            display: block;
-            width: 220px;
-            max-width: 100%;
-            height: 120px;
-            object-fit: contain;
-            background: #ffffff;
-            padding: 0;
-            margin: 0 0 20px;
-            border: none;
-            border-radius: 12px;
-            box-shadow: none;
-        }
-
-        .sidebar .brand-title h2 {
-            margin: 0 0 6px;
-            color: white;
-            font-size: 23px;
-            font-weight: 800;
-        }
-
-        .sidebar .brand-title p {
-            margin: 0;
-            color: #d7e3ff;
-            font-size: 12px;
-        }
-
-        /* SIDEBAR NAVIGATION */
-
-        .sidebar nav {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding: 15px 14px;
-        }
-
-        .sidebar nav .nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 18px;
-            border-radius: 11px;
-            color: #d9e4ff;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 700;
-            transition: 0.2s ease;
-        }
-
-        .sidebar nav .nav-btn i {
-            width: 17px;
-            text-align: center;
-        }
-
-        .sidebar nav .nav-btn:hover {
-            background: rgba(255,255,255,0.12);
-            color: white;
-        }
-
-        .sidebar nav .nav-btn.active {
-            background: white;
-            color: #203b84;
-        }
-
-        .sidebar nav .nav-btn.active i {
-            color: #ed2939;
-        }
-
-        /* SIDEBAR FOOTER */
-
-        .sidebar .sidebar-footer {
-            margin-top: auto;
-            padding: 20px 24px;
-            border-top: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .sidebar .sidebar-footer strong {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 12px;
-            color: white;
-        }
-
-        .sidebar .sidebar-footer span {
-            display: block;
-            color: #b8c9ee;
-            font-size: 10px;
-        }
-
-        /* ==========================================
-           MAIN PAGE
-        ========================================== */
-
-        .app > main {
-            display: block;
-            flex: 1;
-            min-width: 0;
-            width: calc(100% - 263px);
-            max-width: none;
-            min-height: 100vh;
-            margin-left: 263px !important;
-            background: #f4f7fc;
-        }
-
-        /* ==========================================
-           FULL WIDTH KPI DETAIL MODE
-        ========================================== */
-
-        body.kpi-detail-mode .app > .sidebar {
             display: none !important;
         }
 
-        body.kpi-detail-mode .app > main {
-            margin-left: 0 !important;
+        .app > main {
+            display: block !important;
             width: 100% !important;
             max-width: 100% !important;
-            flex: 1;
-        }
-
-        body.kpi-detail-mode .content {
-            width: 100%;
-            max-width: 100%;
+            min-height: 100vh;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #f4f7fc;
+            overflow: visible !important;
         }
 
         /* ==========================================
@@ -204,51 +68,46 @@
         ========================================== */
 
         .topbar {
-            width: 100%;
-            min-height: 120px;
-            padding: 25px 35px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            align-items: center;
+            gap: 25px;
+            width: 100%;
+            min-height: 140px;
+            padding: 20px 35px;
             background: white;
             border-bottom: 3px solid #ed2939;
         }
 
-        .topbar-title h1 {
-            margin: 0 0 8px;
-            color: #203b84;
-            font-size: 24px;
-            font-weight: 800;
+        .topbar-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .topbar-title p {
-            margin: 0;
-            color: #71809b;
-            font-size: 12px;
+        .topbar-title h1 {
+            margin: 0 0 7px;
+            color: #203b84;
+            font-size: 25px;
+            font-weight: 800;
         }
 
         /* BACK TO DASHBOARD */
 
         .back-dashboard {
-            display: none;
+            display: inline-flex !important;
             align-items: center;
             gap: 9px;
-            width: fit-content;
-            padding: 10px 16px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            padding: 11px 16px;
             background: #eef3ff;
             color: #203b84;
             border: 1px solid #dbe4f6;
             border-radius: 10px;
+            text-decoration: none;
             font-size: 12px;
             font-weight: 700;
-            text-decoration: none;
-            transition: 0.2s ease;
-        }
-
-        body.kpi-detail-mode .back-dashboard {
-            display: inline-flex;
+            transition: 0.2s;
         }
 
         .back-dashboard:hover {
@@ -259,59 +118,70 @@
         .topbar-right {
             display: flex;
             align-items: center;
-            gap: 25px;
-        }
-
-        .year {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding: 12px 16px;
-            background: #f0f4ff;
-            color: #203b84;
-            border: 1px solid #dbe4f6;
-            border-radius: 10px;
-            font-size: 12px;
-        }
-
-        .administrator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .admin-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: #203b84;
-            color: white;
-        }
-
-        .administrator strong {
-            display: block;
-            color: #1c2c50;
-            font-size: 12px;
-        }
-
-        .administrator span {
-            display: block;
-            margin-top: 4px;
-            color: #71809b;
-            font-size: 10px;
         }
 
         /* ==========================================
-           MAIN CONTENT
+           CLICKABLE YEAR SELECTOR
+        ========================================== */
+
+        .topbar .year.year-selector {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 108px;
+            padding: 12px 16px;
+            background: #f0f4ff;
+            border: 1px solid #dbe4f6;
+            border-radius: 10px;
+            color: #203b84;
+            cursor: pointer;
+        }
+
+        .year-selector > i {
+            font-size: 12px;
+            color: #203b84;
+            pointer-events: none;
+        }
+
+        .year-selector #selectedYearLabel {
+            font-size: 12px;
+            font-weight: 700;
+            color: #203b84;
+            pointer-events: none;
+        }
+
+        /* Make entire year box clickable */
+
+        .year-selector select {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .year-selector:focus-within {
+            outline: 2px solid #3565c0;
+            outline-offset: 2px;
+        }
+
+        /* ==========================================
+           CONTENT
         ========================================== */
 
         .content {
-            width: 100%;
-            max-width: none;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-height: auto;
+            margin: 0 !important;
             padding: 30px 35px 45px;
+            overflow: visible !important;
         }
 
         #processList,
@@ -320,19 +190,27 @@
             max-width: 100%;
         }
 
+        #processDetail {
+            display: none;
+            position: relative;
+            padding-bottom: 35px;
+            overflow: visible !important;
+        }
+
         /* ==========================================
-           OVERALL HERO
+           OVERALL HERO BANNER
         ========================================== */
 
         .overall-hero {
             position: relative;
-            overflow: hidden;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 25px;
+            min-height: 190px;
             padding: 35px 38px;
             margin-bottom: 28px;
+            overflow: hidden;
             border-radius: 20px;
             background: linear-gradient(
                 135deg,
@@ -340,7 +218,8 @@
                 #204895 60%,
                 #2e61b7 100%
             );
-            box-shadow: 0 12px 30px rgba(23,59,130,0.15);
+            box-shadow: 0 12px 30px
+                rgba(23,59,130,0.15);
             color: white;
         }
 
@@ -376,21 +255,12 @@
             color: white;
             font-size: 28px;
             font-weight: 800;
-            line-height: 1.3;
-        }
-
-        .overall-hero p {
-            margin: 0;
-            max-width: 650px;
-            color: #e0eaff;
-            font-size: 13px;
-            line-height: 1.7;
         }
 
         .hero-year {
             position: relative;
             z-index: 2;
-            min-width: 120px;
+            min-width: 130px;
             padding: 20px;
             text-align: center;
             background: rgba(255,255,255,0.12);
@@ -406,46 +276,33 @@
 
         .hero-year strong {
             display: block;
-            font-size: 26px;
             color: white;
+            font-size: 26px;
         }
 
         .hero-year span {
-            font-size: 10px;
+            display: block;
+            margin-top: 5px;
             color: #dce8ff;
+            font-size: 10px;
         }
 
         /* ==========================================
-           PROCESS DIRECTORY
+           PROCESS SEARCH SECTION
         ========================================== */
-
-        .overall-section-heading {
-            margin-bottom: 20px;
-        }
-
-        .overall-section-heading h2 {
-            margin: 0 0 7px;
-            color: #203b84;
-            font-size: 21px;
-        }
-
-        .overall-section-heading p {
-            margin: 0;
-            color: #7b879b;
-            font-size: 12px;
-        }
 
         .section-tools {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
             padding: 22px 25px;
             margin-bottom: 20px;
             background: white;
             border: 1px solid #dfe6f2;
             border-radius: 16px;
-            box-shadow: 0 5px 18px rgba(20,48,100,0.05);
+            box-shadow: 0 5px 18px
+                rgba(20,48,100,0.05);
         }
 
         .section-tools h3 {
@@ -460,14 +317,44 @@
             font-size: 12px;
         }
 
-        .section-tools .search {
+        .search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             width: 320px;
             max-width: 100%;
+            padding: 12px 14px;
+            background: white;
+            border: 1px solid #dce5f4;
+            border-radius: 10px;
+            color: #8b9bb7;
         }
+
+        .search input {
+            width: 100%;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #203b84;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .search:focus-within {
+            border-color: #3565c0;
+            box-shadow: 0 0 0 3px
+                rgba(53,101,192,0.08);
+        }
+
+        /* ==========================================
+           PROCESS CARDS
+        ========================================== */
 
         .process-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns:
+                repeat(3, minmax(0,1fr));
             gap: 20px;
         }
 
@@ -476,43 +363,56 @@
         }
 
         /* ==========================================
-           KPI PROCESS DETAIL
+           STICKY BACK BAR
         ========================================== */
 
-        #processDetail {
+        #processDetail .sticky-back-bar {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 9999 !important;
+            display: flex;
+            align-items: center;
             width: 100%;
-            padding-bottom: 35px;
+            min-height: 78px;
+            margin: -30px 0 25px;
+            padding: 16px 0;
+            background: #f4f7fc;
+            border-bottom: 1px solid #e1e8f3;
+            box-shadow: 0 6px 15px
+                rgba(20,48,100,0.04);
         }
 
-        #processDetail .back {
-            display: inline-flex;
+        #processDetail #backBtn {
+            display: inline-flex !important;
             align-items: center;
+            justify-content: center;
             gap: 9px;
-            margin-bottom: 25px;
+            margin: 0;
             padding: 11px 17px;
             background: white;
             color: #203b84;
             border: 1px solid #dce5f4;
             border-radius: 10px;
+            font-family: inherit;
             font-size: 12px;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(20,48,100,0.05);
             cursor: pointer;
-            transition: 0.2s ease;
+            transition: 0.2s;
         }
 
-        #processDetail .back:hover {
+        #processDetail #backBtn:hover {
             background: #203b84;
             color: white;
+            border-color: #203b84;
         }
-
-        /* Keep IDs for existing JavaScript */
 
         #processDetail > .heading {
             display: none !important;
         }
 
-        /* PROCESS INFORMATION CARD */
+        /* ==========================================
+           KPI PROCESS BANNER
+        ========================================== */
 
         #processDetail .kpi-process-banner {
             display: flex !important;
@@ -525,11 +425,11 @@
             margin-bottom: 25px;
             padding: 30px 35px;
             background: white !important;
-            background-image: none !important;
             border: 1px solid #dce5f4;
             border-left: 5px solid #203b84;
             border-radius: 18px;
-            box-shadow: 0 8px 28px rgba(20,48,100,0.07);
+            box-shadow: 0 8px 28px
+                rgba(20,48,100,0.07);
         }
 
         #processDetail .kpi-process-left {
@@ -549,7 +449,6 @@
             min-width: 70px;
             background: #eaf0ff !important;
             color: #203b84 !important;
-            border: none;
             border-radius: 17px;
         }
 
@@ -575,13 +474,9 @@
             line-height: 1.3;
         }
 
-        #processDetail .kpi-process-left p {
-            margin: 0;
-            color: #71809b !important;
-            font-size: 13px;
-        }
-
-        /* KPI COUNT */
+        /* ==========================================
+           KPI COUNT
+        ========================================== */
 
         #processDetail .kpi-count {
             display: flex !important;
@@ -592,10 +487,8 @@
             min-height: 100px;
             padding: 18px 25px;
             background: #eaf1ff !important;
-            background-image: none !important;
             border: 1px solid #dbe6fb;
             border-radius: 15px;
-            box-shadow: none !important;
         }
 
         #processDetail .kpi-count strong {
@@ -609,7 +502,6 @@
             color: #203b84 !important;
             font-size: 10px;
             font-weight: 800;
-            letter-spacing: 0.5px;
         }
 
         /* ==========================================
@@ -624,13 +516,14 @@
             background: white;
             border: 1px solid #dce5f4;
             border-radius: 17px;
-            box-shadow: 0 8px 28px rgba(20,48,100,0.06);
+            box-shadow: 0 8px 28px
+                rgba(20,48,100,0.06);
         }
 
         #processDetail .panel-head {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
             padding: 24px 28px;
             background: white;
@@ -654,7 +547,9 @@
             max-width: 100%;
         }
 
-        /* KPI TABLE */
+        /* ==========================================
+           KPI TABLE
+        ========================================== */
 
         #processDetail .kpi-table-wrap {
             width: 100%;
@@ -668,25 +563,133 @@
             border-collapse: collapse;
         }
 
-        #processDetail .kpi-detail-table thead {
+        #processDetail .kpi-detail-table thead,
+        #processDetail .kpi-detail-table th {
             background: #203b84;
         }
 
         #processDetail .kpi-detail-table th {
-            background: #203b84;
-            color: white;
             padding: 17px 18px;
-            font-size: 12px;
+            color: white !important;
+            font-size: 13px;
             font-weight: 700;
+            text-align: left;
         }
 
         #processDetail .kpi-detail-table td {
             padding: 17px 18px;
             border-bottom: 1px solid #e8edf5;
+            color: #000000 !important;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        #processDetail .kpi-detail-table tbody td * {
+            color: #000000 !important;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
         }
 
         #processDetail .kpi-detail-table tbody tr:hover {
             background: #f5f8ff;
+        }
+
+        /* NUMBER WITHOUT BACKGROUND BOX */
+
+        #processDetail .number-cell {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        #processDetail .number-badge {
+            display: inline !important;
+            width: auto !important;
+            height: auto !important;
+            min-width: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            color: #000000 !important;
+        }
+
+        /* CENTER FREQUENCY AND TARGET */
+
+        #processDetail .center-cell {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        /* EXCEL STYLE MERGED CELLS */
+
+        #processDetail td[rowspan] {
+            vertical-align: middle !important;
+        }
+
+        #processDetail .excel-merged-cell {
+            background: white !important;
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        #processDetail .kpi-department-name {
+            text-align: left !important;
+            font-weight: 400 !important;
+        }
+
+        /* ==========================================
+           NO DATA PAGE FOR 2027
+        ========================================== */
+
+        #overall2026[hidden],
+        #noYearData[hidden] {
+            display: none !important;
+        }
+
+        .no-year-data {
+            margin: 35px;
+            padding: 80px 25px;
+            background: white;
+            border: 1px solid #dfe6f2;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 18px
+                rgba(20,48,100,0.05);
+        }
+
+        .no-year-data > i {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 46px;
+            color: #94a3b8;
+        }
+
+        .no-year-data h2 {
+            margin: 0 0 10px;
+            color: #203b84;
+            font-size: 23px;
+        }
+
+        .no-year-data p {
+            margin: 0 0 24px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .no-year-data button {
+            border: none;
+            border-radius: 9px;
+            padding: 12px 22px;
+            background: #203b84;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .no-year-data button:hover {
+            background: #3458b0;
         }
 
         /* ==========================================
@@ -705,72 +708,13 @@
         ========================================== */
 
         @media (max-width: 1100px) {
-
-            .app > .sidebar {
-                width: 220px;
-            }
-
-            .app > main {
-                margin-left: 220px !important;
-                width: calc(100% - 220px);
-            }
-
-            .sidebar .brand {
-                padding: 20px 15px;
-            }
-
             .process-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0,1fr));
             }
         }
 
         @media (max-width: 700px) {
-
-            .app {
-                display: block !important;
-            }
-
-            .app > .sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-                min-height: auto;
-            }
-
-            .sidebar .brand {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .sidebar .kwsp-logo {
-                width: 110px;
-                height: auto;
-                margin: 0;
-            }
-
-            .sidebar .brand-title h2 {
-                font-size: 18px;
-            }
-
-            .sidebar nav {
-                flex-direction: row;
-            }
-
-            .sidebar nav .nav-btn {
-                flex: 1;
-                padding: 12px 10px;
-                justify-content: center;
-            }
-
-            .sidebar .sidebar-footer {
-                display: none;
-            }
-
-            .app > main {
-                width: 100%;
-                margin-left: 0 !important;
-            }
 
             .topbar {
                 padding: 20px;
@@ -800,7 +744,7 @@
                 align-items: stretch;
             }
 
-            .section-tools .search {
+            .search {
                 width: 100%;
             }
 
@@ -808,13 +752,16 @@
                 grid-template-columns: 1fr;
             }
 
+            #processDetail .sticky-back-bar {
+                margin-top: -20px;
+                min-height: 70px;
+            }
+
             #processDetail .kpi-process-banner {
                 padding: 22px;
-                gap: 20px;
             }
 
             #processDetail .kpi-process-left {
-                align-items: flex-start;
                 gap: 14px;
             }
 
@@ -838,136 +785,74 @@
                 padding: 20px;
             }
 
-            #processDetail .panel-head .search {
-                width: 100%;
-            }
-
             #processDetail .kpi-detail-table {
                 min-width: 800px;
+            }
+
+            .no-year-data {
+                margin: 18px;
+                padding: 55px 20px;
             }
         }
 
     </style>
+
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- ==========================================
-         LEFT SIDEBAR
-    ========================================== -->
-
-    <aside class="sidebar">
-
-        <div class="brand">
-
-            <img
-                src="images/kwsp-logo.png"
-                alt="KWSP EPF Logo"
-                class="kwsp-logo"
-            >
-
-            <div class="brand-title">
-                <h2>ITIL KPI</h2>
-                <p>Dashboard 2026</p>
-            </div>
-
-        </div>
-
-        <!-- NAVIGATION -->
-
-        <nav>
-
-            <a href="dashboard.html"
-               class="nav-btn">
-
-                <i class="fa-solid fa-house"></i>
-                Dashboard
-
-            </a>
-
-            <a href="overall.html"
-               class="nav-btn active"
-               aria-current="page">
-
-                <i class="fa-solid fa-list-check"></i>
-                Overall ITIL KPI
-
-            </a>
-
-        </nav>
-
-        <!-- SIDEBAR FOOTER -->
-
-        <div class="sidebar-footer">
-
-            <strong>KWSP / EPF</strong>
-
-            <span>ITIL KPI Monitoring</span>
-
-        </div>
-
-    </aside>
-
-    <!-- ==========================================
-         MAIN CONTENT
-    ========================================== -->
-
     <main>
 
-        <!-- TOP BAR -->
+        <!-- ======================================
+             TOP BAR
+        ====================================== -->
 
         <header class="topbar">
 
             <div class="topbar-title">
 
-                <!-- ONLY SHOW IN KPI DETAIL MODE -->
-
-                <a href="dashboard.html"
-                   class="back-dashboard">
-
+                <a
+                    href="dashboard.html"
+                    class="back-dashboard"
+                >
                     <i class="fa-solid fa-arrow-left"></i>
-
                     Back to Dashboard
-
                 </a>
 
-                <h1>Overall ITIL KPI 2026</h1>
-
-                <p>ITIL KPI Register</p>
+                <h1>
+                    ITIL KPI Register 2026
+                </h1>
 
             </div>
 
+            <!-- YEAR SELECTOR -->
+
             <div class="topbar-right">
 
-                <!-- YEAR -->
-
-                <div class="year">
+                <div class="year year-selector">
 
                     <i class="fa-regular fa-calendar"></i>
 
-                    <span>2026</span>
+                    <span id="selectedYearLabel">
+                        2026
+                    </span>
 
-                </div>
+                    <select
+                        id="yearSelect"
+                        aria-label="Select reporting year"
+                    >
+                        <option value="2026" selected>
+                            2026
+                        </option>
 
-                <!-- USER -->
+                        <option value="2027">
+                            2027
+                        </option>
+                    </select>
 
-                <div class="administrator">
-
-                    <div class="admin-icon">
-
-                        <i class="fa-solid fa-user"></i>
-
-                    </div>
-
-                    <div>
-
-                        <strong>ITIL KPI Portal</strong>
-
-                        <span>KWSP / EPF</span>
-
-                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
 
                 </div>
 
@@ -975,15 +860,48 @@
 
         </header>
 
-        <!-- ==========================================
-             PAGE CONTENT
-        ========================================== -->
+        <!-- ======================================
+             NO DATA AVAILABLE
+        ====================================== -->
 
-        <section class="content">
+        <section
+            id="noYearData"
+            class="no-year-data"
+            hidden
+        >
 
-            <!-- ======================================
+            <i class="fa-regular fa-calendar-xmark"></i>
+
+            <h2 id="noYearTitle">
+                No KPI Data Available for 2027
+            </h2>
+
+            <p>
+                KPI data for the selected reporting
+                year is not available yet.
+            </p>
+
+            <button
+                type="button"
+                id="backTo2026"
+            >
+                View 2026 KPI Register
+            </button>
+
+        </section>
+
+        <!-- ======================================
+             OVERALL KPI DATA FOR 2026
+        ====================================== -->
+
+        <section
+            id="overall2026"
+            class="content"
+        >
+
+            <!-- ==================================
                  PROCESS DIRECTORY
-            ====================================== -->
+            ================================== -->
 
             <div id="processList">
 
@@ -995,9 +913,9 @@
 
                         <span class="hero-label">
 
-                            <i class="fa-solid fa-layer-group"></i>
+                            
 
-                            ITIL PERFORMANCE MANAGEMENT
+                            
 
                         </span>
 
@@ -1005,17 +923,7 @@
                             KPI Register &amp; Process Overview
                         </h2>
 
-                        <p>
-                            Explore ITIL processes,
-                            Key Performance Indicators,
-                            reporting frequency,
-                            targets and stretch targets
-                            for 2026.
-                        </p>
-
                     </div>
-
-                    <!-- REPORTING YEAR -->
 
                     <div class="hero-year">
 
@@ -1026,19 +934,6 @@
                         <span>REPORTING YEAR</span>
 
                     </div>
-
-                </div>
-
-                <!-- SECTION HEADING -->
-
-                <div class="overall-section-heading">
-
-                    <h2>ITIL Process Directory</h2>
-
-                    <p>
-                        Select an ITIL process
-                        to view its KPI details.
-                    </p>
 
                 </div>
 
@@ -1072,37 +967,43 @@
 
                 </div>
 
-                <!-- PROCESS CARDS FROM JS -->
+                <!-- PROCESS CARDS GENERATED BY JS -->
 
                 <div
                     id="processGrid"
-                    class="process-grid">
-                </div>
+                    class="process-grid"
+                ></div>
 
             </div>
 
-            <!-- ======================================
-                 KPI DETAIL
-            ====================================== -->
+            <!-- ==================================
+                 KPI DETAIL PAGE
+            ================================== -->
 
             <div
                 id="processDetail"
-                class="process-detail">
+                class="process-detail"
+            >
 
-                <!-- BACK TO PROCESS LIST -->
+                <!-- BACK TO ITIL PROCESS -->
 
-                <button
-                    type="button"
-                    id="backBtn"
-                    class="back">
+                <div class="sticky-back-bar">
 
-                    <i class="fa-solid fa-arrow-left"></i>
+                    <button
+                        type="button"
+                        id="backBtn"
+                        class="back"
+                    >
 
-                    Back to ITIL Process
+                        <i class="fa-solid fa-arrow-left"></i>
 
-                </button>
+                        Back to ITIL Process
 
-                <!-- ORIGINAL HEADING FOR JS -->
+                    </button>
+
+                </div>
+
+                <!-- ORIGINAL ELEMENTS FOR SCRIPT.JS -->
 
                 <div class="heading">
 
@@ -1120,7 +1021,7 @@
 
                 </div>
 
-                <!-- PROCESS INFORMATION CARD -->
+                <!-- KPI PROCESS BANNER -->
 
                 <div class="kpi-process-banner">
 
@@ -1130,8 +1031,8 @@
 
                             <i
                                 id="detailProcessIcon"
-                                class="fa-solid fa-triangle-exclamation">
-                            </i>
+                                class="fa-solid fa-triangle-exclamation"
+                            ></i>
 
                         </div>
 
@@ -1144,10 +1045,6 @@
                             <h2 id="bannerProcessTitle">
                                 Incident Management
                             </h2>
-
-                            <p>
-                                Overall ITIL KPI 2026
-                            </p>
 
                         </div>
 
@@ -1177,11 +1074,11 @@
 
                             <h3>KPI Register</h3>
 
-                            <p>Overall ITIL KPI 2026</p>
+                            
 
                         </div>
 
-                        <!-- KPI SEARCH -->
+                        <!-- SEARCH KPI -->
 
                         <label class="search">
 
@@ -1232,8 +1129,9 @@
 
                             </thead>
 
-                            <tbody id="kpiBody">
-                            </tbody>
+                            <!-- DATA GENERATED BY SCRIPT.JS -->
+
+                            <tbody id="kpiBody"></tbody>
 
                         </table>
 
@@ -1248,23 +1146,24 @@
         <!-- FOOTER -->
 
         <footer>
-            © 2026 KWSP / EPF — ITIL KPI Dashboard
+            © 2026 KWSP / EPF —
+            ITIL KPI Dashboard
         </footer>
 
     </main>
 
 </div>
 
-<!-- ==========================================
-     ORIGINAL JAVASCRIPT
-========================================== -->
+<!-- ======================================
+     EXISTING PROJECT JAVASCRIPT
+====================================== -->
 
 <script src="js/data.js"></script>
 <script src="js/script.js"></script>
 
-<!-- ==========================================
-     AUTOMATIC SIDEBAR CONTROL
-========================================== -->
+<!-- ======================================
+     PAGE LAYOUT OBSERVER
+====================================== -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -1279,25 +1178,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    /*
-       Check whether KPI detail is visible.
-       Existing js/script.js controls
-       processList and processDetail.
-    */
-
     function updatePageLayout() {
 
-        const listStyle =
-            window.getComputedStyle(processList);
-
-        const detailStyle =
-            window.getComputedStyle(processDetail);
-
         const listHidden =
-            listStyle.display === "none";
+            window.getComputedStyle(processList)
+                .display === "none";
 
         const detailVisible =
-            detailStyle.display !== "none";
+            window.getComputedStyle(processDetail)
+                .display !== "none";
 
         const isDetailMode =
             listHidden && detailVisible;
@@ -1308,26 +1197,112 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-    /*
-       Watch for changes made by
-       existing JavaScript.
-    */
-
     const observer =
         new MutationObserver(updatePageLayout);
 
     observer.observe(processList, {
         attributes: true,
-        attributeFilter: ["style", "class"]
+        attributeFilter: [
+            "style",
+            "class",
+            "hidden"
+        ]
     });
 
     observer.observe(processDetail, {
         attributes: true,
-        attributeFilter: ["style", "class"]
+        attributeFilter: [
+            "style",
+            "class",
+            "hidden"
+        ]
     });
 
-    // Check initial state
     updatePageLayout();
+
+});
+</script>
+
+<!-- ======================================
+     YEAR SELECTION FUNCTION
+====================================== -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const yearSelect =
+        document.getElementById("yearSelect");
+
+    const selectedYearLabel =
+        document.getElementById("selectedYearLabel");
+
+    const overall2026 =
+        document.getElementById("overall2026");
+
+    const noYearData =
+        document.getElementById("noYearData");
+
+    const noYearTitle =
+        document.getElementById("noYearTitle");
+
+    const backButton =
+        document.getElementById("backTo2026");
+
+    // ======================================
+    // SHOW DATA BASED ON SELECTED YEAR
+    // ======================================
+
+    function showSelectedYear(year) {
+
+        // Change year shown in dropdown
+        selectedYearLabel.textContent = year;
+
+        // Data currently exists only for 2026
+        const hasData = year === "2026";
+
+        // Show / hide respective sections
+        overall2026.hidden = !hasData;
+        noYearData.hidden = hasData;
+
+        // Show message for unavailable year
+        if (!hasData) {
+
+            noYearTitle.textContent =
+                "No KPI Data Available for " + year;
+
+            document.body.classList.remove(
+                "kpi-detail-mode"
+            );
+        }
+    }
+
+    // ======================================
+    // CHANGE YEAR
+    // ======================================
+
+    yearSelect.addEventListener("change", function () {
+
+        showSelectedYear(yearSelect.value);
+
+    });
+
+    // ======================================
+    // BACK TO 2026
+    // ======================================
+
+    backButton.addEventListener("click", function () {
+
+        yearSelect.value = "2026";
+
+        showSelectedYear("2026");
+
+    });
+
+    // ======================================
+    // INITIAL PAGE LOAD
+    // ======================================
+
+    showSelectedYear(yearSelect.value);
 
 });
 </script>
