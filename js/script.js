@@ -268,632 +268,394 @@ function loadProcessCards() {
    AUTO MERGE CONTINUATION ROWS
 ========================================================= */
 
+
+/* ================================================
+   OVERALL ITIL KPI - VIEW PROCESS
+   EXCEL STYLE MERGED CELLS
+================================================ */
+
 function viewProcess(index) {
-
-    const processes =
-        getProcessData();
-
-    const process =
-        processes[index];
-
+    const processes = getProcessData();
+    const process = processes[index];
 
     if (!process) {
-
-        console.error(
-            "Process not found:",
-            index
-        );
-
+        console.error("Process not found:", index);
         return;
     }
 
+    const processList = document.getElementById("processList");
+    const processDetail = document.getElementById("processDetail");
+    const processTitle = document.getElementById("processTitle");
+    const processCount = document.getElementById("processCount");
+    const kpiBody = document.getElementById("kpiBody");
 
-    /* =====================================================
-       GET ELEMENTS
-    ===================================================== */
-
-    const processList =
-        document.getElementById(
-            "processList"
-        );
-
-    const processDetail =
-        document.getElementById(
-            "processDetail"
-        );
-
-    const processTitle =
-        document.getElementById(
-            "processTitle"
-        );
-
-    const processCount =
-        document.getElementById(
-            "processCount"
-        );
-
-    const kpiBody =
-        document.getElementById(
-            "kpiBody"
-        );
-
-
-    if (
-        !processList ||
-        !processDetail ||
-        !kpiBody
-    ) {
+    if (!processList || !processDetail || !kpiBody) {
         return;
     }
 
-
-    /* =====================================================
-       SHOW DETAIL PAGE
-    ===================================================== */
-
-    processList.style.display =
-        "none";
-
-    processDetail.style.display =
-        "block";
-
+    processList.style.display = "none";
+    processDetail.style.display = "block";
 
     if (processTitle) {
-
-        processTitle.textContent =
-            process.name;
+        processTitle.textContent = process.name;
     }
 
-
     if (processCount) {
-
         processCount.textContent =
             `${process.count} KPI Group(s)`;
     }
 
-const bannerProcessTitle =
-    document.getElementById("bannerProcessTitle");
+    const bannerTitle =
+        document.getElementById("bannerProcessTitle");
 
-const detailKpiCount =
-    document.getElementById("detailKpiCount");
+    const detailCount =
+        document.getElementById("detailKpiCount");
 
-const detailProcessIcon =
-    document.getElementById("detailProcessIcon");
+    const detailIcon =
+        document.getElementById("detailProcessIcon");
 
-if (bannerProcessTitle) {
-    bannerProcessTitle.textContent = process.name;
-}
+    if (bannerTitle) {
+        bannerTitle.textContent = process.name;
+    }
 
-if (detailKpiCount) {
-    detailKpiCount.textContent = process.count;
-}
+    if (detailCount) {
+        detailCount.textContent = process.count;
+    }
 
-if (detailProcessIcon) {
-    detailProcessIcon.className =
-        `fa-solid ${process.icon || "fa-list-check"}`;
-}
-
-
-    /* =====================================================
-       GET ROWS
-    ===================================================== */
+    if (detailIcon) {
+        detailIcon.className =
+            `fa-solid ${process.icon || "fa-list-check"}`;
+    }
 
     kpiBody.innerHTML = "";
 
-
-    const rows =
-        Array.isArray(process.rows)
-            ? process.rows
-            : [];
-
+    const rows = Array.isArray(process.rows)
+        ? process.rows
+        : [];
 
     if (rows.length === 0) {
-
         kpiBody.innerHTML = `
             <tr>
-                <td
-                    colspan="5"
-                    class="empty-table-cell"
-                >
+                <td colspan="5">
                     No KPI data available.
                 </td>
             </tr>
         `;
-
         return;
     }
 
-
-    /* =====================================================
-       HELPER - CHECK VALUE
-    ===================================================== */
-
-    function hasValue(value) {
-
-        return (
-            value !== null &&
-            value !== undefined &&
-            String(value).trim() !== ""
-        );
-    }
-
-
-    /* =====================================================
-       HELPER - BADGES
-    ===================================================== */
-
-    function renderNumber(value) {
-
-        if (!hasValue(value)) {
-            return "-";
-        }
-
-        return `
-            <span class="number-badge">
-                ${escapeHTML(value)}
-            </span>
-        `;
-    }
-
-
-    function renderFrequency(value) {
-
-        if (!hasValue(value)) {
-            return "-";
-        }
-
-        return `
-            <span class="frequency-badge">
-                ${escapeHTML(value)}
-            </span>
-        `;
-    }
-
-
-    function renderTarget(value) {
-
-        if (!hasValue(value)) {
-            return "-";
-        }
-
-        return `
-            <span class="target-value">
-                ${escapeHTML(value)}
-            </span>
-        `;
-    }
-
-
-    function renderStretch(value) {
-
-        if (!hasValue(value)) {
-            return "-";
-        }
-
-        return `
-            <span class="stretch-value">
-                ${escapeHTML(value)}
-            </span>
-        `;
-    }
-
-
-    function renderKPI(value) {
-
-        if (!hasValue(value)) {
-            return "-";
-        }
-
-        return escapeHTML(value)
-            .replaceAll(
-                "\n",
-                "<br>"
-            );
-    }
-
-
-    /* =====================================================
-       RENDER ROWS
-    ===================================================== */
-
-    let i = 0;
-
-
-    while (i < rows.length) {
-
-        const row =
-            rows[i] || {};
-
-
-        /* =================================================
-           GROUP HEADING
-
-           Contoh:
-           Service Availability
-           Service Performance
-        ================================================= */
-
-        const isGroupRow =
-    /^\d+$/.test(String(row.no || "").trim()) &&
-    hasValue(row.kpi) &&
-    !hasValue(row.frequency) &&
-    !hasValue(row.target) &&
-    !hasValue(row.stretch);
-
-        if (isGroupRow) {
-
-            const tr =
-                document.createElement(
-                    "tr"
-                );
-
-
-            tr.classList.add(
-                "group-row"
-            );
-
-
-            tr.innerHTML = `
-
-                <td class="number-cell">
-
-                    ${renderNumber(row.no)}
-
-                </td>
-
-
-                <td class="kpi-name">
-
-                    ${renderKPI(row.kpi)}
-
-                </td>
-
-
-                <td class="center-cell">
-                    -
-                </td>
-
-
-                <td class="center-cell">
-                    -
-                </td>
-
-
-                <td class="center-cell">
-                    -
-                </td>
-
-            `;
-
-
-            kpiBody.appendChild(tr);
-
-
-            i++;
-
-            continue;
-        }
-
-
-        /* =================================================
-           CHECK CONTINUATION ROWS
-
-           Contoh:
-
-           4 | KPI NAME | 1 time BCM Plan
-             |          | 1 time ITSCM Plan
-             |          | 1 time DR Procedures
-        ================================================= */
-/* =================================================
-   CHECK CONTINUATION ROWS
-   Merge row sambungan macam Excel
-================================================= */
-
-let rowSpan = 1;
-
-
-/*
-   Hanya mula check continuation
-   kalau row sekarang ialah KPI utama
-*/
-if (
-    hasValue(row.no) &&
-    hasValue(row.kpi)
-) {
-
-    let nextIndex = i + 1;
-
-
-    while (nextIndex < rows.length) {
-
-        const nextRow =
-            rows[nextIndex] || {};
-
-
-        const nextNo =
-            String(
-                nextRow.no ?? ""
-            ).trim();
-
-
-        const nextKPI =
-            String(
-                nextRow.kpi ?? ""
-            ).trim();
-
-
-        /*
-           Kalau row seterusnya ada nombor KPI baru,
-           maksudnya dah masuk KPI lain.
-        */
-        const hasNewNumber =
-            nextNo !== "" &&
-            nextNo !== "-";
-
-
-        /*
-           Kalau row seterusnya ada nama KPI baru,
-           maksudnya dah masuk KPI lain.
-        */
-        const hasNewKPI =
-            nextKPI !== "" &&
-            nextKPI !== "-";
-
-
-        /*
-           STOP bila jumpa KPI baru
-        */
-        if (
-            hasNewNumber ||
-            hasNewKPI
-        ) {
-            break;
-        }
-
-
-        /*
-           Kalau No dan KPI kosong / "-"
-           = continuation kepada KPI sebelumnya.
-
-           Tak kisah frequency / target / stretch
-           ada value atau kosong.
-        */
-        rowSpan++;
-
-
-        nextIndex++;
-    }
+    // ==========================================
+    // HELPER FUNCTIONS
+    // ==========================================
+
+    const clean = value =>
+        String(value ?? "").trim();
+
+    const hasValue = value =>
+        clean(value) !== "";
+
+    const renderKPI = value =>
+        hasValue(value)
+            ? escapeHTML(value).replaceAll("\n", "<br>")
+            : "-";
+
+    const renderNumber = value =>
+        hasValue(value)
+            ? `<span class="number-badge">${escapeHTML(value)}</span>`
+            : "-";
+
+    const renderFrequency = value =>
+        hasValue(value)
+            ? `<span class="frequency-badge">${escapeHTML(value)}</span>`
+            : "-";
+
+    const renderTarget = value =>
+        hasValue(value)
+            ? `<span class="target-value">${escapeHTML(value)}</span>`
+            : "-";
+
+    const renderStretch = value =>
+        hasValue(value)
+            ? `<span class="stretch-value">${escapeHTML(value)}</span>`
+            : "-";
+
+    // ==========================================
+    // DEPARTMENT DETECTION
+    // ==========================================
+
+
+const departmentNames = [
+    "digital infrastructure department",
+    "digital core solution department",
+    "digital enterprise solution department",
+    "digital security department",
+    "digital service management",
+    "digital delivery solution",
+    "digital delivery department",
+    "digital architecture & innovation department",
+    "digital architecture and innovation department",
+    "center of excellence",
+    "centre of excellence"
+];
+
+function isDepartment(value) {
+    const name = clean(value).toLowerCase();
+
+    return departmentNames.some(dept =>
+        name.includes(dept)
+    ) || /\b(DID|DCSD|DESD|DSD|DSMS|DSMD|DDS|DDD|DAID|COE)\b/i.test(name);
 }
 
 
-        /* =================================================
-           MAIN KPI ROW
-        ================================================= */
+    function isDepartment(value) {
+        const name = clean(value).toLowerCase();
 
-        const tr =
-            document.createElement(
-                "tr"
-            );
+        return departmentNames.some(dept =>
+            name.includes(dept)
+        ) || /\b(DID|DCSD|DESD|DSD|DSMS|DDS|COE)\b/i.test(name);
+    }
 
+    // ==========================================
+    // RENDER KPI TABLE
+    // ==========================================
 
-        let html = "";
+    let i = 0;
 
+    while (i < rows.length) {
+        const row = rows[i] || {};
 
-        /* =================================================
-           NO COLUMN
-           ROWSPAN JIKA ADA CONTINUATION
-        ================================================= */
+        // Group heading without targets
+        const isGroupRow =
+            /^\d+$/.test(clean(row.no)) &&
+            hasValue(row.kpi) &&
+            !hasValue(row.frequency) &&
+            !hasValue(row.target) &&
+            !hasValue(row.stretch);
 
-        html += `
+        if (isGroupRow) {
+            const tr = document.createElement("tr");
+            tr.className = "group-row";
 
-            <td
-                class="number-cell"
-                ${rowSpan > 1
-                    ? `rowspan="${rowSpan}"`
-                    : ""
+            tr.innerHTML = `
+                <td class="number-cell">
+                    ${renderNumber(row.no)}
+                </td>
+                <td class="kpi-name">
+                    ${renderKPI(row.kpi)}
+                </td>
+                <td class="center-cell">-</td>
+                <td class="center-cell">-</td>
+                <td class="center-cell">-</td>
+            `;
+
+            kpiBody.appendChild(tr);
+            i++;
+            continue;
+        }
+
+        // ======================================
+        // FIND DEPARTMENT ROWS
+        // ======================================
+
+        let rowSpan = 1;
+        let departmentGroup = false;
+
+        const isReportingByDivision =
+            process.name === "Change & Release Management" &&
+            clean(row.kpi)
+                .toLowerCase()
+                .includes("reporting by division") &&
+            /^\d+$/.test(clean(row.no));
+
+        if (isReportingByDivision) {
+            let nextIndex = i + 1;
+
+            while (nextIndex < rows.length) {
+                const nextRow = rows[nextIndex] || {};
+                const nextNo = clean(nextRow.no);
+                const nextKPI = clean(nextRow.kpi);
+
+                if (nextNo && nextNo !== "-") {
+                    break;
                 }
-            >
 
-                ${renderNumber(row.no)}
-
-            </td>
-
-        `;
-
-
-        /* =================================================
-           KPI NAME COLUMN
-           ROWSPAN JIKA ADA CONTINUATION
-        ================================================= */
-
-        html += `
-
-            <td
-                class="kpi-name"
-                ${rowSpan > 1
-                    ? `rowspan="${rowSpan}"`
-                    : ""
+                if (!isDepartment(nextKPI)) {
+                    break;
                 }
-            >
 
-                ${renderKPI(row.kpi)}
+                rowSpan++;
+                nextIndex++;
+            }
 
-            </td>
+            departmentGroup = rowSpan > 1;
+        }
 
-        `;
+        // ======================================
+        // EXCEL STYLE MERGED DEPARTMENT KPI
+        // ======================================
 
+        if (departmentGroup) {
+            const mainTr = document.createElement("tr");
+            mainTr.className = "kpi-main-row";
 
-        /* =================================================
-           FREQUENCY
-        ================================================= */
+            mainTr.innerHTML = `
+                <td
+                    class="number-cell excel-merged-cell"
+                    rowspan="${rowSpan}"
+                >
+                    ${renderNumber(row.no)}
+                </td>
 
-        html += `
+                <td class="kpi-name kpi-main-name">
+                    ${renderKPI(row.kpi)}
+                </td>
 
-            <td class="center-cell">
+                <td
+                    class="center-cell excel-merged-cell"
+                    rowspan="${rowSpan}"
+                >
+                    ${renderFrequency(row.frequency)}
+                </td>
 
-                ${renderFrequency(
-                    row.frequency
-                )}
+                <td
+                    class="center-cell excel-merged-cell"
+                    rowspan="${rowSpan}"
+                >
+                    ${renderTarget(row.target)}
+                </td>
 
-            </td>
+                <td
+                    class="center-cell excel-merged-cell"
+                    rowspan="${rowSpan}"
+                >
+                    ${renderStretch(row.stretch)}
+                </td>
+            `;
 
-        `;
+            kpiBody.appendChild(mainTr);
 
+            // Render department rows
+            for (let j = 1; j < rowSpan; j++) {
+                const department = rows[i + j] || {};
 
-        /* =================================================
-           TARGET
-        ================================================= */
+                const subTr = document.createElement("tr");
+                subTr.className = "kpi-department-row";
 
-        html += `
-
-            <td class="center-cell">
-
-                ${renderTarget(
-                    row.target
-                )}
-
-            </td>
-
-        `;
-
-
-        /* =================================================
-           STRETCH TARGET
-        ================================================= */
-
-        html += `
-
-            <td class="center-cell">
-
-                ${renderStretch(
-                    row.stretch
-                )}
-
-            </td>
-
-        `;
-
-
-        tr.innerHTML =
-            html;
-
-
-        kpiBody.appendChild(
-            tr
-        );
-
-
-        /* =================================================
-           RENDER CONTINUATION ROW
-        ================================================= */
-
-        if (rowSpan > 1) {
-
-            for (
-                let j = 1;
-                j < rowSpan;
-                j++
-            ) {
-
-                const continuationRow =
-                    rows[i + j] || {};
-
-
-                const continuationTr =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                continuationTr.classList.add(
-                    "continuation-row"
-                );
-
-
-                /*
-                   PENTING:
-
-                   Tak render No.
-                   Tak render KPI Name.
-
-                   Sebab dua cell tersebut
-                   sudah menggunakan rowspan.
-                */
-
-                continuationTr.innerHTML = `
-
-                    <td class="center-cell">
-
-                        ${renderFrequency(
-                            continuationRow.frequency
-                        )}
-
+                subTr.innerHTML = `
+                    <td class="kpi-name kpi-department-name">
+                        ${renderKPI(department.kpi)}
                     </td>
-
-
-                    <td class="center-cell">
-
-                        ${renderTarget(
-                            continuationRow.target
-                        )}
-
-                    </td>
-
-
-                    <td class="center-cell">
-
-                        ${renderStretch(
-                            continuationRow.stretch
-                        )}
-
-                    </td>
-
                 `;
 
+                kpiBody.appendChild(subTr);
+            }
 
-                kpiBody.appendChild(
-                    continuationTr
-                );
+            i += rowSpan;
+            continue;
+        }
+
+        // ======================================
+        // ORIGINAL CONTINUATION ROW MERGING
+        // ======================================
+
+        rowSpan = 1;
+
+        if (hasValue(row.no) && hasValue(row.kpi)) {
+            let nextIndex = i + 1;
+
+            while (nextIndex < rows.length) {
+                const nextRow = rows[nextIndex] || {};
+
+                const nextNo = clean(nextRow.no);
+                const nextKPI = clean(nextRow.kpi);
+
+                if (
+                    (nextNo && nextNo !== "-") ||
+                    (nextKPI && nextKPI !== "-")
+                ) {
+                    break;
+                }
+
+                rowSpan++;
+                nextIndex++;
             }
         }
 
+        const tr = document.createElement("tr");
 
-        /* =================================================
-           SKIP ROW YANG DAH DIGABUNG
-        ================================================= */
+        tr.innerHTML = `
+            <td
+                class="number-cell"
+                rowspan="${rowSpan}"
+            >
+                ${renderNumber(row.no)}
+            </td>
+
+            <td
+                class="kpi-name"
+                rowspan="${rowSpan}"
+            >
+                ${renderKPI(row.kpi)}
+            </td>
+
+            <td class="center-cell">
+                ${renderFrequency(row.frequency)}
+            </td>
+
+            <td class="center-cell">
+                ${renderTarget(row.target)}
+            </td>
+
+            <td class="center-cell">
+                ${renderStretch(row.stretch)}
+            </td>
+        `;
+
+        kpiBody.appendChild(tr);
+
+        // Continuation rows
+        for (let j = 1; j < rowSpan; j++) {
+            const continuation = rows[i + j] || {};
+
+            const continuationTr =
+                document.createElement("tr");
+
+            continuationTr.className = "continuation-row";
+
+            continuationTr.innerHTML = `
+                <td class="center-cell">
+                    ${renderFrequency(continuation.frequency)}
+                </td>
+
+                <td class="center-cell">
+                    ${renderTarget(continuation.target)}
+                </td>
+
+                <td class="center-cell">
+                    ${renderStretch(continuation.stretch)}
+                </td>
+            `;
+
+            kpiBody.appendChild(continuationTr);
+        }
 
         i += rowSpan;
     }
 
-
-    /* =====================================================
-       RESET SEARCH
-    ===================================================== */
-
+    // Reset search
     const kpiSearch =
-        document.getElementById(
-            "kpiSearch"
-        );
-
+        document.getElementById("kpiSearch");
 
     if (kpiSearch) {
-
         kpiSearch.value = "";
     }
 
-
-    /* =====================================================
-       SCROLL TOP
-    ===================================================== */
-
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
 }
+
 
 
 /* =========================================================
@@ -2602,11 +2364,23 @@ document.addEventListener(
            OVERALL ITIL KPI
         ====================================================== */
 
-        loadProcessCards();
+        
+loadProcessCards();
 
-        setupProcessSearch();
+setupProcessSearch();
 
-        setupKPISearch();
+setupKPISearch();
+
+// DEFAULT: SHOW PROCESS DIRECTORY WITH SIDEBAR
+const overallList = document.getElementById("processList");
+const overallDetail = document.getElementById("processDetail");
+
+if (overallList && overallDetail) {
+    overallList.style.display = "block";
+    overallDetail.style.display = "none";
+    document.body.classList.remove("kpi-detail-mode");
+}
+
 
 
         const backButton =
