@@ -60,7 +60,7 @@ const PROCESS_DATA = [
       },
       {
         "no": "2",
-        "kpi": "",
+        "kpi": "SR Tickets Customer Satisfaction (CSAT Rated 4 and 5 over total answered)",
         "frequency": "Monthly",
         "target": "90%",
         "stretch": "92%"
@@ -81,49 +81,49 @@ const PROCESS_DATA = [
       },
       {
         "no": "1a",
-        "kpi": "DID",
+        "kpi": "Digital Infrastructure Department (DID)",
         "frequency": "Bi-Annually",
         "target": "50%",
         "stretch": "60%"
       },
       {
         "no": "1b",
-        "kpi": "DCSD",
+        "kpi": "Digital Core Solutions Department (DCSD)",
         "frequency": "Bi-Annually",
         "target": "50%",
         "stretch": "60%"
       },
       {
         "no": "1c",
-        "kpi": "DESD",
+        "kpi": "Digital Enterprise Solutions Department (DESD)",
         "frequency": "Bi-Annually",
         "target": "50%",
         "stretch": "60%"
       },
       {
         "no": "1d",
-        "kpi": "DSD",
+        "kpi": "Digital Security Department (DSD)",
         "frequency": "Bi-Annually",
         "target": "50%",
         "stretch": "60%"
       },
       {
         "no": "1e",
-        "kpi": "DSMS",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "Bi-Annually",
         "target": "50%",
         "stretch": "60%"
       },
       {
         "no": "1f",
-        "kpi": "DDS",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "Bi-Annually",
         "target": "50%",
         "stretch": "60%"
       },
       {
         "no": "1g",
-        "kpi": "COE",
+        "kpi": "Digital Architecture & Innovation Department (DAID)",
         "frequency": "Bi-Annually",
         "target": "50%",
         "stretch": "60%"
@@ -420,28 +420,28 @@ const PROCESS_DATA = [
         "kpi": "KWSP - Bangi (ELC)\nKWSP - PJDC\nKWSP - Menara KWSP",
         "frequency": "Monthly",
         "target": "99.9%",
-        "stretch": "1"
+        "stretch": "100.0%"
       },
       {
         "no": "3b",
         "kpi": "Branch A",
         "frequency": "Monthly",
         "target": "99.5%",
-        "stretch": "1"
+        "stretch": "100.0%"
       },
       {
         "no": "3c",
         "kpi": "Branch B",
         "frequency": "Monthly",
         "target": "99.5%",
-        "stretch": "1"
+        "stretch": "100.0%"
       },
       {
         "no": "3d",
         "kpi": "Branch C",
         "frequency": "Monthly",
         "target": "99.5%",
-        "stretch": "1"
+        "stretch": "100.0%"
       },
       {
         "no": "4",
@@ -455,7 +455,7 @@ const PROCESS_DATA = [
         "kpi": "Business Intelligence",
         "frequency": "Monthly",
         "target": "95%",
-        "stretch": "1"
+        "stretch": "100.0%"
       }
     ]
   },
@@ -754,7 +754,7 @@ const PROCESS_DATA = [
     ]
   },
   {
-    "name": "Service Level Management & Business Relationship Management",
+    "name": "Service Level Management",
     "icon": "fa-handshake",
     "count": 4,
     "rows": [
@@ -774,49 +774,49 @@ const PROCESS_DATA = [
       },
       {
         "no": "2a",
-        "kpi": "DCSD - Digital Core Solutions Department",
+        "kpi": "Digital Core Solutions Department (DCSD)",
         "frequency": "Monthly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "2b",
-        "kpi": "DID - Digital Infrastructure Department",
+        "kpi": "Digital Infrastructure Department (DID)",
         "frequency": "Monthly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "2c",
-        "kpi": "DESD - Digital Enterprise Solutions Department",
+        "kpi": "Digital Enterprise Solutions Department (DESD)",
         "frequency": "Monthly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "2d",
-        "kpi": "DSD - Digital Security Department",
+        "kpi": "Digital Security Department (DSD)",
         "frequency": "Monthly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "2e",
-        "kpi": "DDS - Digital Delivery Section",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "Monthly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "2f",
-        "kpi": "DSMS - Digital Service Management Section",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "Monthly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "2g",
-        "kpi": "COE - Center of Excellence",
+        "kpi": "Digital Architecture & Innovation Department (DAID) ",
         "frequency": "Monthly",
         "target": "96%",
         "stretch": "98%"
@@ -825,16 +825,16 @@ const PROCESS_DATA = [
         "no": "3",
         "kpi": "No of Service Improvement Plan (SIP) successfully achieved service improvement objectives from SIP Target completion date after SIP approved",
         "frequency": "Yearly",
-        "target": "1",
+        "target": "100%",
         "stretch": "N/A"
       },
-      {
-        "no": "Business Relationship Management",
-        "kpi": "",
-        "frequency": "",
-        "target": "",
-        "stretch": ""
-      },
+    ]
+  },
+   {
+    "name": "Business Relationship Management",
+    "icon": "fa-handshake",
+    "count": 4,
+    "rows": [
       {
         "no": "4",
         "kpi": "Customer Satisfaction Survey (CSS) result",
@@ -844,49 +844,49 @@ const PROCESS_DATA = [
       },
       {
         "no": "4a",
-        "kpi": "DCSD - Digital Core Solutions Department",
+        "kpi": "Digital Core Solutions Department (DCSD)",
         "frequency": "Yearly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "4b",
-        "kpi": "DID - Digital Infrastructure Department",
+        "kpi": "Digital Infrastructure Department (DID)",
         "frequency": "Yearly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "4c",
-        "kpi": "DESD - Digital Enterprise Solutions Department",
+        "kpi": "Digital Enterprise Solutions Department (DESD)",
         "frequency": "Yearly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "4d",
-        "kpi": "DSD - Digital Security Department",
+        "kpi": "Digital Security Department (DSD)",
         "frequency": "Yearly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "4e",
-        "kpi": "DDS - Digital Delivery Solution",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "Yearly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "4f",
-        "kpi": "DSMS -  Digital Service Management Section",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "Yearly",
         "target": "96%",
         "stretch": "98%"
       },
       {
         "no": "4g",
-        "kpi": "COE - Center of Excellence",
+        "kpi": "Digital Architecture &Innovation Department (DAID)",
         "frequency": "Yearly",
         "target": "96%",
         "stretch": "98%"
@@ -938,7 +938,7 @@ const PROCESS_DATA = [
         "kpi": "%  of change/release implementation success rate",
         "frequency": "Quarterly",
         "target": "95%",
-        "stretch": "1"
+        "stretch": "100%"
       },
       {
         "no": "2",
@@ -977,21 +977,21 @@ const PROCESS_DATA = [
       },
       {
         "no": "",
-        "kpi": "Digital Service Management (DSMS)",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "",
         "target": "",
         "stretch": ""
       },
       {
         "no": "",
-        "kpi": "Digital Delivery Solution (DDS)",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "",
         "target": "",
         "stretch": ""
       },
       {
         "no": "",
-        "kpi": "Center of Excellence (COE)",
+        "kpi": "Digital Architecture & Innovation Department (DAID)",
         "frequency": "",
         "target": "",
         "stretch": ""
@@ -1033,21 +1033,21 @@ const PROCESS_DATA = [
       },
       {
         "no": "",
-        "kpi": "Digital Service Management (DSMS)",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "",
         "target": "",
         "stretch": ""
       },
       {
         "no": "",
-        "kpi": "Digital Delivery Solution (DDS)",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "",
         "target": "",
         "stretch": ""
       },
       {
         "no": "",
-        "kpi": "Center of Excellence (COE)",
+        "kpi": "Digital Architecture & Innovation Department (DAID)",
         "frequency": "",
         "target": "",
         "stretch": ""
@@ -1089,21 +1089,21 @@ const PROCESS_DATA = [
       },
       {
         "no": "4e",
-        "kpi": "Digital Service Management (DSMS)",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "Monthly",
         "target": "0 rfc",
         "stretch": "0 rfc"
       },
       {
         "no": "4f",
-        "kpi": "Digital Delivery Solution (DDS)",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "Monthly",
         "target": "0 rfc",
         "stretch": "0 rfc"
       },
       {
         "no": "4g",
-        "kpi": "Center of Excellence (COE)",
+        "kpi": "Digital Architecture & Innovation Department (DAID)",
         "frequency": "Monthly",
         "target": "0 rfc",
         "stretch": "0 rfc"
@@ -1145,49 +1145,49 @@ const PROCESS_DATA = [
       },
       {
         "no": "1A",
-        "kpi": "a) Centre of Excellence (COE)",
+        "kpi": "Digital Architecture & Innovation Department (DAID)",
         "frequency": "Monthly",
         "target": "0",
         "stretch": "0"
       },
       {
         "no": "1B",
-        "kpi": "b) Digital Core Solutions (DCSD)",
+        "kpi": "Digital Core Solutions (DCSD)",
         "frequency": "Monthly",
         "target": "0",
         "stretch": "0"
       },
       {
         "no": "1C",
-        "kpi": "c) Digital Delivery Solution (DDS)",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "Monthly",
         "target": "0",
         "stretch": "0"
       },
       {
         "no": "1D",
-        "kpi": "d) Digital Enterprise Solutions (DESD)",
+        "kpi": "Digital Enterprise Solutions Department (DESD)",
         "frequency": "Monthly",
         "target": "0",
         "stretch": "0"
       },
       {
         "no": "1E",
-        "kpi": "e) Digital Infrastructure (DID)",
+        "kpi": "Digital Infrastructure Department (DID)",
         "frequency": "Monthly",
         "target": "0",
         "stretch": "0"
       },
       {
         "no": "1F",
-        "kpi": "f) Digital Security (DSD)",
+        "kpi": "Digital Security Department (DSD)",
         "frequency": "Monthly",
         "target": "0",
         "stretch": "0"
       },
       {
         "no": "1G",
-        "kpi": "g) Digital Service Management (DSMS)",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "Monthly",
         "target": "0",
         "stretch": "0"
@@ -1201,49 +1201,49 @@ const PROCESS_DATA = [
       },
       {
         "no": "2a",
-        "kpi": "a) Centre of Excellence (COE)",
+        "kpi": "Digital Architecture & Innovation Department (DAID)",
         "frequency": "Quarterly",
         "target": "1",
         "stretch": "1"
       },
       {
         "no": "2b",
-        "kpi": "b) Digital Core Solutions (DCSD)",
+        "kpi": "Digital Core Solutions Department (DCSD)",
         "frequency": "Quarterly",
         "target": "1",
         "stretch": "1"
       },
       {
         "no": "2c",
-        "kpi": "c) Digital Delivery Solution (DDS)",
+        "kpi": "Digital Delivery Department (DDD)",
         "frequency": "Quarterly",
         "target": "1",
         "stretch": "1"
       },
       {
         "no": "2d",
-        "kpi": "d) Digital Enterprise Solutions (DESD)",
+        "kpi": "Digital Enterprise Solutions Department (DESD)",
         "frequency": "Quarterly",
         "target": "1",
         "stretch": "1"
       },
       {
         "no": "2e",
-        "kpi": "e) Digital Infrastructure (DID)",
+        "kpi": "Digital Infrastructure Department (DID)",
         "frequency": "Quarterly",
         "target": "1",
         "stretch": "1"
       },
       {
         "no": "2f",
-        "kpi": "f) Digital Security (DSD)",
+        "kpi": "Digital Security Department (DSD)",
         "frequency": "Quarterly",
         "target": "1",
         "stretch": "1"
       },
       {
         "no": "2g",
-        "kpi": "g) Digital Service Management (DSMS)",
+        "kpi": "Digital Service Management Department (DSMD)",
         "frequency": "Quarterly",
         "target": "1",
         "stretch": "1"
@@ -1273,8 +1273,8 @@ const PROCESS_DATA = [
         "no": "2",
         "kpi": "License entittlement",
         "frequency": "Half Yearly",
-        "target": "0",
-        "stretch": "0"
+        "target": "0%",
+        "stretch": "0%"
       },
       {
         "no": "3",
@@ -1294,8 +1294,8 @@ const PROCESS_DATA = [
         "no": "1",
         "kpi": "Additional budget requested (Yearly)",
         "frequency": "Yearly",
-        "target": "1%",
-        "stretch": "0.5%"
+        "target": "1.00%",
+        "stretch": "0.50%"
       },
       {
         "no": "2",
@@ -1313,49 +1313,49 @@ const PROCESS_DATA = [
       },
       {
         "no": "4a",
-        "kpi": "(a) Cost Saving (Yearly)- DESD",
+        "kpi": "Cost Saving (Yearly)- Digital Enterprise Solutions Department (DESD)",
         "frequency": "Yearly",
         "target": "3%",
         "stretch": "5%"
       },
       {
         "no": "4b",
-        "kpi": "(b) Cost Saving (Yearly) – DCSD",
+        "kpi": "Cost Saving (Yearly) – Digital Core Solutions Department (DCSD)",
         "frequency": "Yearly",
         "target": "3%",
         "stretch": "5%"
       },
       {
         "no": "4c",
-        "kpi": "(c) Cost Saving (Yearly) – DID",
+        "kpi": "Cost Saving (Yearly) – Digital Infrastructure Department (DID)",
         "frequency": "Yearly",
         "target": "3%",
         "stretch": "5%"
       },
       {
         "no": "4d",
-        "kpi": "(d) Cost Saving (Yearly) – DSD",
+        "kpi": "Cost Saving (Yearly) – Digital Security Department (DSD)",
         "frequency": "Yearly",
         "target": "3%",
         "stretch": "5%"
       },
       {
         "no": "4e",
-        "kpi": "(e) Cost Saving (Yearly) – DSMS",
+        "kpi": "Cost Saving (Yearly) – Digital Service Management Department (DSMD)",
         "frequency": "Yearly",
         "target": "3%",
         "stretch": "5%"
       },
       {
         "no": "4f",
-        "kpi": "(f) Cost Saving (Yearly) – DDS",
+        "kpi": "Cost Saving (Yearly) – Digital Delivery Department (DDD)",
         "frequency": "Yearly",
         "target": "3%",
         "stretch": "5%"
       },
       {
         "no": "4g",
-        "kpi": "(g) Cost Saving (Yearly) – COE",
+        "kpi": "Cost Saving (Yearly) – Digital Architecture & Innovation Department (DAID)",
         "frequency": "Yearly",
         "target": "3%",
         "stretch": "5%"
@@ -1816,7 +1816,7 @@ const RESULT_2026 = {
     [
       "KM",
       "1g",
-      "COE",
+      "DAID",
       "Bi-Annually",
       "50%",
       "60%",
@@ -3696,7 +3696,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "2a",
-      "DCSD - Digital Core Solutions Department",
+      "Digital Core Solutions Department (DCSD)",
       "Monthly",
       "96%",
       "98%",
@@ -3716,7 +3716,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "2b",
-      "DID - Digital Infrastructure Department",
+      "Digital Infrastructure Department (DID)",
       "Monthly",
       "96%",
       "98%",
@@ -3736,7 +3736,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "2c",
-      "DESD - Digital Enterprise Solutions Department",
+      "Digital Enterprise Solutions Department (DESD)",
       "Monthly",
       "96%",
       "98%",
@@ -3756,7 +3756,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "2d",
-      "DSD - Digital Security Department",
+      "Digital Security Department (DSD)",
       "Monthly",
       "96%",
       "98%",
@@ -3776,7 +3776,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "2e",
-      "DDS - Digital Delivery Section",
+      "Digital Delivery Department (DDD)",
       "Monthly",
       "96%",
       "98%",
@@ -3796,7 +3796,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "2f",
-      "DSMS - Digital Service Management Section",
+      "Digital Service Management Department (DSMD)",
       "Monthly",
       "96%",
       "98%",
@@ -3816,7 +3816,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "2g",
-      "COE - Center of Excellence",
+      "Digital Architecture & Innovation Department (DAID)",
       "Monthly",
       "96%",
       "98%",
@@ -3896,7 +3896,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "4a",
-      "DCSD - Digital Core Solutions Department",
+      "Digital Core Solutions Department (DCSD)",
       "Yearly",
       "96%",
       "98%",
@@ -3916,7 +3916,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "4b",
-      "DID - Digital Infrastructure Department",
+      "Digital Infrastructure Department (DID)",
       "Yearly",
       "96%",
       "98%",
@@ -3936,7 +3936,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "4c",
-      "DESD - Digital Enterprise Solutions Department",
+      "Digital Enterprise Solutions Department (DESD)",
       "Yearly",
       "96%",
       "98%",
@@ -3956,7 +3956,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "4d",
-      "DSD - Digital Security Department",
+      "Digital Security Department (DSD)",
       "Yearly",
       "96%",
       "98%",
@@ -3976,7 +3976,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "4e",
-      "DDS - Digital Delivery Solution",
+      "Digital Delivery Department (DDD)",
       "Yearly",
       "96%",
       "98%",
@@ -3996,7 +3996,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "4f",
-      "DSMS -  Digital Service Management Section",
+      "Digital Service Management Department (DSMD)",
       "Yearly",
       "96%",
       "98%",
@@ -4016,7 +4016,7 @@ const RESULT_2026 = {
     [
       "SLM/BRM",
       "4g",
-      "COE - Center of Excellence",
+      "Digital Architecture & Innovation Department (DAID)",
       "Yearly",
       "96%",
       "98%",
@@ -4276,7 +4276,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "",
-      "Digital Service Management (DSMS)",
+      "Digital Service Management Department(DSMD)",
       "",
       "",
       "",
@@ -4296,7 +4296,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "",
-      "Digital Delivery Solution (DDS)",
+      "Digital Delivery Department (DDD)",
       "",
       "",
       "",
@@ -4316,7 +4316,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "",
-      "Center of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "",
       "",
       "",
@@ -4436,7 +4436,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "",
-      "Digital Service Management (DSMS)",
+      "Digital Service Management Department (DSMD)",
       "",
       "",
       "",
@@ -4456,7 +4456,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "",
-      "Digital Delivery Solution (DDS)",
+      "Digital Delivery Department (DDD)",
       "",
       "",
       "",
@@ -4476,7 +4476,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "",
-      "Center of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "",
       "",
       "",
@@ -4596,7 +4596,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "4e",
-      "Digital Service Management (DSMS)",
+      "Digital Service Management Department(DSMD)",
       "Monthly",
       "0 rfc",
       "0 rfc",
@@ -4616,7 +4616,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "4f",
-      "Digital Delivery Solution (DDS)",
+      "Digital Delivery Department (DDD)",
       "Monthly",
       "0 rfc",
       "0 rfc",
@@ -4636,7 +4636,7 @@ const RESULT_2026 = {
     [
       "CHGREL",
       "4g",
-      "Center of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "Monthly",
       "0 rfc",
       "0 rfc",
@@ -4756,7 +4756,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "1A",
-      "a) Centre of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "Monthly",
       "0",
       "0",
@@ -4776,7 +4776,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "1B",
-      "b) Digital Core Solutions (DCSD)",
+      "Digital Core Solutions Department (DCSD)",
       "Monthly",
       "0",
       "0",
@@ -4796,7 +4796,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "1C",
-      "c) Digital Delivery Solution (DDS)",
+      "Digital Delivery Department (DDD)",
       "Monthly",
       "0",
       "0",
@@ -4816,7 +4816,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "1D",
-      "d) Digital Enterprise Solutions (DESD)",
+      "Digital Enterprise Solutions Department (DESD)",
       "Monthly",
       "0",
       "0",
@@ -4836,7 +4836,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "1E",
-      "e) Digital Infrastructure (DID)",
+      "Digital Infrastructure Department (DID)",
       "Monthly",
       "0",
       "0",
@@ -4856,7 +4856,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "1F",
-      "f) Digital Security (DSD)",
+      "Digital Security Department (DSD)",
       "Monthly",
       "0",
       "0",
@@ -4876,7 +4876,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "1G",
-      "g) Digital Service Management (DSMS)",
+      "Digital Service Management Department (DSMD)",
       "Monthly",
       "0",
       "0",
@@ -4916,7 +4916,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "2a",
-      "a) Centre of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "Quarterly",
       "1",
       "1",
@@ -4936,7 +4936,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "2b",
-      "b) Digital Core Solutions (DCSD)",
+      "Digital Core Solutions Department (DCSD)",
       "Quarterly",
       "1",
       "1",
@@ -4956,7 +4956,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "2c",
-      "c) Digital Delivery Solution (DDS)",
+      "Digital Delivery Department (DDD)",
       "Quarterly",
       "1",
       "1",
@@ -4976,7 +4976,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "2d",
-      "d) Digital Enterprise Solutions (DESD)",
+      "Digital Enterprise Solutions Department (DESD)",
       "Quarterly",
       "1",
       "1",
@@ -4996,7 +4996,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "2e",
-      "e) Digital Infrastructure (DID)",
+      "Digital Infrastructure Department (DID)",
       "Quarterly",
       "1",
       "1",
@@ -5016,7 +5016,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "2f",
-      "f) Digital Security (DSD)",
+      "Digital Security Department (DSD)",
       "Quarterly",
       "1",
       "1",
@@ -5036,7 +5036,7 @@ const RESULT_2026 = {
     [
       "SUP",
       "2g",
-      "g) Digital Service Management (DSMS)",
+      "Digital Service Management Department (DSMD)",
       "Quarterly",
       "1",
       "1",
@@ -5356,7 +5356,7 @@ const RESULT_2026 = {
     [
       "FIN",
       "4g",
-      "(g) Cost Saving (Yearly) – COE",
+      "(g) Cost Saving (Yearly) – DAID",
       "Yearly",
       "3%",
       "5%",
@@ -5803,7 +5803,7 @@ const RESULT_JANJUN = {
     [
       "KM",
       "1g",
-      "Knowledge Articles Relevancy Review Rate - COE",
+      "Knowledge Articles Relevancy Review Rate - DAID",
       "Bi-Annually",
       "50%",
       "60%",
@@ -7119,7 +7119,7 @@ const RESULT_JANJUN = {
     [
       "SLM/BRM",
       "2g",
-      "COE - Center of Excellence",
+      "DAID - Digital Architecture & Innovation Department",
       "Monthly",
       "96%",
       "98%",
@@ -7245,7 +7245,7 @@ const RESULT_JANJUN = {
     [
       "SLM/BRM",
       "4g",
-      "COE - Center of Excellence",
+      "DAID - Digital Architecture & Innovation Department",
       "Yearly",
       "96%",
       "98%",
@@ -7427,7 +7427,7 @@ const RESULT_JANJUN = {
     [
       "CHGREL",
       "2g",
-      "Center of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "",
       "",
       "",
@@ -7539,7 +7539,7 @@ const RESULT_JANJUN = {
     [
       "CHGREL",
       "3g",
-      "Center of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "",
       "",
       "",
@@ -7651,7 +7651,7 @@ const RESULT_JANJUN = {
     [
       "CHGREL",
       "4g",
-      "Center of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "Monthly",
       "0 rfc",
       "0 rfc",
@@ -7707,7 +7707,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "1A",
-      "a) Centre of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "Monthly",
       "0",
       "0",
@@ -7721,7 +7721,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "1B",
-      "b) Digital Core Solutions (DCSD)",
+      "Digital Core Solutions (DCSD)",
       "Monthly",
       "0",
       "0",
@@ -7735,7 +7735,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "1C",
-      "c) Digital Delivery Solution (DDS)",
+      "Digital Delivery Solution (DDS)",
       "Monthly",
       "0",
       "0",
@@ -7749,7 +7749,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "1D",
-      "d) Digital Enterprise Solutions (DESD)",
+      "Digital Enterprise Solutions (DESD)",
       "Monthly",
       "0",
       "0",
@@ -7763,7 +7763,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "1E",
-      "e) Digital Infrastructure (DID)",
+      "Digital Infrastructure (DID)",
       "Monthly",
       "0",
       "0",
@@ -7777,7 +7777,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "1F",
-      "f) Digital Security (DSD)",
+      "Digital Security (DSD)",
       "Monthly",
       "0",
       "0",
@@ -7791,7 +7791,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "1G",
-      "g) Digital Service Management (DSMS)",
+      "Digital Service Management (DSMS)",
       "Monthly",
       "0",
       "0",
@@ -7819,7 +7819,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "2a",
-      "a) Centre of Excellence (COE)",
+      "Digital Architecture & Innovation Department (DAID)",
       "Quarterly",
       "1",
       "1",
@@ -7833,7 +7833,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "2b",
-      "b) Digital Core Solutions (DCSD)",
+      "Digital Core Solutions Department(DCSD)",
       "Quarterly",
       "1",
       "1",
@@ -7847,7 +7847,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "2c",
-      "c) Digital Delivery Solution (DDS)",
+      "Digital Delivery Department (DDS)",
       "Quarterly",
       "1",
       "1",
@@ -7861,7 +7861,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "2d",
-      "d) Digital Enterprise Solutions (DESD)",
+      "Digital Enterprise Solutions Department (DESD)",
       "Quarterly",
       "1",
       "1",
@@ -7875,7 +7875,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "2e",
-      "e) Digital Infrastructure (DID)",
+      "Digital Infrastructure Department (DID)",
       "Quarterly",
       "1",
       "1",
@@ -7889,7 +7889,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "2f",
-      "f) Digital Security (DSD)",
+      "Digital Security Department (DSD)",
       "Quarterly",
       "1",
       "1",
@@ -7903,7 +7903,7 @@ const RESULT_JANJUN = {
     [
       "SUP",
       "2g",
-      "g) Digital Service Management (DSMS)",
+      "Digital Service Management Department (DSMD)",
       "Quarterly",
       "1",
       "1",
@@ -8099,7 +8099,7 @@ const RESULT_JANJUN = {
     [
       "FIN",
       "4g",
-      "(g) Cost Saving (Yearly) – COE",
+      "(g) Cost Saving (Yearly) – DAID",
       "Yearly",
       "3%",
       "5%",
