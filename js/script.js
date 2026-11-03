@@ -328,6 +328,7 @@ function viewProcess(index) {
     }
 
     kpiBody.innerHTML = "";
+    
 
     const rows = Array.isArray(process.rows)
         ? process.rows
@@ -344,6 +345,7 @@ function viewProcess(index) {
         return;
     }
 
+    
     // ==========================================
     // HELPER FUNCTIONS
     // ==========================================
@@ -434,6 +436,7 @@ function isDepartment(value) {
 
         if (isGroupRow) {
             const tr = document.createElement("tr");
+            
             tr.className = "group-row";
 
             tr.innerHTML = `
@@ -581,35 +584,50 @@ function isDepartment(value) {
             }
         }
 
-        const tr = document.createElement("tr");
+      
+const tr = document.createElement("tr");
 
-        tr.innerHTML = `
-            <td
-                class="number-cell"
-                rowspan="${rowSpan}"
-            >
-                ${renderNumber(row.no)}
-            </td>
+/* ==========================================
+   BLUE HIGHLIGHT FOR KPI NUMBER 2
+   SERVICE REQUEST MANAGEMENT
+========================================== */
 
-            <td
-                class="kpi-name"
-                rowspan="${rowSpan}"
-            >
-                ${renderKPI(row.kpi)}
-            </td>
+if (
+    process.name === "Service Request Management" &&
+    String(row.no).trim() === "2"
+) {
+    tr.classList.add("group-row");
+}
 
-            <td class="center-cell">
-                ${renderFrequency(row.frequency)}
-            </td>
+/* CONTINUE ORIGINAL TABLE RENDERING */
 
-            <td class="center-cell">
-                ${renderTarget(row.target)}
-            </td>
+tr.innerHTML = `
+    <td
+        class="number-cell"
+        rowspan="${rowSpan}"
+    >
+        ${renderNumber(row.no)}
+    </td>
 
-            <td class="center-cell">
-                ${renderStretch(row.stretch)}
-            </td>
-        `;
+    <td
+        class="kpi-name"
+        rowspan="${rowSpan}"
+    >
+        ${renderKPI(row.kpi)}
+    </td>
+
+    <td class="center-cell">
+        ${renderFrequency(row.frequency)}
+    </td>
+
+    <td class="center-cell">
+        ${renderTarget(row.target)}
+    </td>
+
+    <td class="center-cell">
+        ${renderStretch(row.stretch)}
+    </td>
+`;
 
         kpiBody.appendChild(tr);
 
@@ -649,6 +667,297 @@ function isDepartment(value) {
     if (kpiSearch) {
         kpiSearch.value = "";
     }
+
+/* ==========================================
+   INCIDENT MANAGEMENT
+   MAIN KPI 1, 2, 3 = LIGHT BLUE
+   SUB KPI = WHITE
+========================================== */
+
+if (process.name === "Incident Management") {
+
+    const incidentRows = document.querySelectorAll(
+        "#processDetail .kpi-detail-table tbody tr"
+    );
+
+    incidentRows.forEach(function (tr) {
+
+        const numberCell = tr.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        const no = numberCell.textContent.trim();
+
+        const isMainKPI = ["1", "2", "3"].includes(no);
+
+        tr.querySelectorAll("td").forEach(function (td) {
+
+            td.style.setProperty(
+                "background-color",
+                isMainKPI ? "#e8f0ff" : "#ffffff",
+                "important"
+            );
+
+        });
+
+    });
+
+}
+
+/* ==========================================
+   SERVICE REQUEST MANAGEMENT
+   KPI 1 & 2 = BLUE
+   KPI 1a & 1b = WHITE
+========================================== */
+
+if (process.name === "Service Request Management") {
+
+    const serviceRows = document.querySelectorAll(
+        "#kpiBody tr"
+    );
+
+    serviceRows.forEach(function (tr) {
+
+        const numberCell = tr.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        const no = numberCell.textContent.trim();
+
+        const isMainKPI = ["1", "2"].includes(no);
+
+        tr.querySelectorAll("td").forEach(function (td) {
+
+            td.style.setProperty(
+                "background-color",
+                isMainKPI ? "#e8f0ff" : "#ffffff",
+                "important"
+            );
+
+        });
+
+    });
+
+}
+
+/* ==========================================
+   KNOWLEDGE MANAGEMENT
+   KPI 1 = BLUE
+   KPI 1a - 1g = WHITE
+========================================== */
+
+if (process.name === "Knowledge Management") {
+
+    const knowledgeRows = document.querySelectorAll(
+        "#kpiBody tr"
+    );
+
+    knowledgeRows.forEach(function (tr) {
+
+        const numberCell = tr.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        const no = numberCell.textContent.trim();
+
+        tr.querySelectorAll("td").forEach(function (td) {
+
+            td.style.setProperty(
+                "background-color",
+                no === "1" ? "#e8f0ff" : "#ffffff",
+                "important"
+            );
+
+        });
+
+    });
+
+}
+
+/* ==========================================
+   AVAILABILITY MANAGEMENT
+   KPI 1, 2, 3, 4 = BLUE
+   SUB KPI = WHITE
+========================================== */
+
+if (process.name === "Availability Management") {
+
+    const availabilityRows =
+        document.querySelectorAll("#kpiBody tr");
+
+    availabilityRows.forEach(function (tr) {
+
+        const numberCell =
+            tr.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        const no = numberCell.textContent.trim();
+
+        const isMainKPI =
+            ["1", "2", "3", "4"].includes(no);
+
+        tr.querySelectorAll("td").forEach(function (td) {
+
+            td.style.setProperty(
+                "background-color",
+                isMainKPI ? "#e8f0ff" : "#ffffff",
+                "important"
+            );
+
+        });
+
+    });
+
+}
+
+/* ==========================================
+   CAPACITY MANAGEMENT
+   KPI UTAMA = BIRU MUDA
+   ANAK KPI = PUTIH
+========================================== */
+
+if (process.name === "Capacity Management") {
+
+    const capacityRows = document.querySelectorAll(
+        "#kpiBody tr"
+    );
+
+    capacityRows.forEach(function (tr) {
+
+        const numberCell = tr.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        const no = numberCell.textContent.trim();
+
+        // Hanya nombor utama 1 hingga 7
+        const isMainKPI = /^[1-7]$/.test(no);
+
+        tr.querySelectorAll("td").forEach(function (td) {
+
+            td.style.setProperty(
+                "background-color",
+                isMainKPI ? "#e8f0ff" : "#ffffff",
+                "important"
+            );
+
+        });
+
+    });
+
+}
+
+/* ==========================================
+   SLM & BRM
+   MAIN KPI = BLUE
+   SUB KPI = WHITE
+========================================== */
+
+if (
+    process.name === "Service Level Management" ||
+    process.name === "SLM & BRM" ||
+    process.name.includes("Business Relationship Management")
+) {
+
+    const slmRows = document.querySelectorAll(
+        "#kpiBody tr, #slmBrmTables tbody tr"
+    );
+
+    slmRows.forEach(function (tr) {
+
+        const numberCell = tr.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        const no = numberCell.textContent.trim();
+
+        const isMainKPI = ["1", "2", "3", "4"].includes(no);
+
+        tr.querySelectorAll("td").forEach(function (td) {
+
+            td.style.setProperty(
+                "background-color",
+                isMainKPI ? "#e8f0ff" : "#ffffff",
+                "important"
+            );
+
+        });
+
+    });
+
+}
+
+/* ==========================================
+   SUPPLIER MANAGEMENT
+   KPI 1, 2, 3 = BIRU MUDA
+   ANAK KPI = PUTIH
+========================================== */
+
+if (process.name === "Supplier Management") {
+
+    const supplierRows =
+        document.querySelectorAll("#kpiBody tr");
+
+    supplierRows.forEach(function (tr) {
+
+        const numberCell =
+            tr.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        const no = numberCell.textContent.trim();
+
+        const isMainKPI = ["1", "2", "3"].includes(no);
+
+        tr.querySelectorAll("td").forEach(function (td) {
+
+            td.style.setProperty(
+                "background-color",
+                isMainKPI ? "#e8f0ff" : "#ffffff",
+                "important"
+            );
+
+        });
+
+    });
+
+}
+
+/* ==========================================
+   DATA RESILIENCY - SECTION TITLE
+========================================== */
+
+const dataResiliencyRow = Array.from(
+    kpiBody.querySelectorAll("tr")
+).find(function (tr) {
+
+    const kpiCell = tr.querySelector(".kpi-name");
+
+    return kpiCell &&
+        kpiCell.textContent.trim().toLowerCase() ===
+        "data resiliency";
+});
+
+if (dataResiliencyRow) {
+
+    dataResiliencyRow.innerHTML = `
+        <td colspan="5" style="
+            background: #f8faff !important;
+            color: #000000 !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            text-align: left !important;
+            padding: 18px 25px !important;
+            border-top: 14px solid #f4f7fc !important;
+            border-bottom: 1px solid #dce5f4 !important;
+        ">
+            DATA RESILIENCY
+        </td>
+    `;
+
+}
+
 
     window.scrollTo({
         top: 0,
@@ -709,6 +1018,202 @@ function closeProcess() {
             window.location.pathname
         );
     }
+
+/* ==========================================
+   CAPACITY MANAGEMENT DROPDOWN
+   KDDC & PJDC
+========================================== */
+
+if (process.name === "Capacity Management") {
+
+    const capacityRows = Array.from(
+        kpiBody.querySelectorAll("tr")
+    );
+
+    function getCapacityNo(tr) {
+        const cell = tr.querySelector(".number-cell");
+        return cell ? cell.textContent.trim() : "";
+    }
+
+    function createCapacityDropdown(
+        startLabel,
+        endLabels
+    ) {
+
+        const startIndex = capacityRows.findIndex(
+            tr => getCapacityNo(tr) === startLabel
+        );
+
+        if (startIndex === -1) return;
+
+        let endIndex = capacityRows.findIndex(
+            (tr, index) =>
+                index > startIndex &&
+                endLabels.includes(getCapacityNo(tr))
+        );
+
+        if (endIndex === -1) {
+            endIndex = capacityRows.length;
+        }
+
+        const parent = capacityRows[startIndex];
+
+        const children = capacityRows.slice(
+            startIndex + 1,
+            endIndex
+        );
+
+        if (!children.length) return;
+
+        const cell = parent.querySelector(".number-cell");
+
+        if (!cell) return;
+
+        parent.classList.add("capacity-dropdown-parent");
+
+        const arrow = document.createElement("i");
+        arrow.className = "fa-solid fa-chevron-down";
+        arrow.style.marginLeft = "10px";
+
+        cell.appendChild(arrow);
+
+        children.forEach(tr => {
+            tr.style.display = "none";
+        });
+
+        let open = false;
+
+        parent.addEventListener("click", function () {
+
+            open = !open;
+
+            children.forEach(tr => {
+                tr.style.display = open ? "" : "none";
+            });
+
+            arrow.className = open
+                ? "fa-solid fa-chevron-up"
+                : "fa-solid fa-chevron-down";
+        });
+    }
+
+    // KDDC details end when PJDC begins
+    createCapacityDropdown("KDDC", ["PJDC"]);
+
+    // PJDC details end before KPI 4a
+    createCapacityDropdown("PJDC", ["4a", "5"]);
+
+}
+
+/* ==========================================
+   CHANGE & RELEASE MANAGEMENT DROPDOWN
+   KPI 2, 3, 4
+========================================== */
+
+if (process.name === "Change & Release Management") {
+
+    const changeRows = Array.from(
+        kpiBody.querySelectorAll(":scope > tr")
+    );
+
+    function getChangeNumber(tr) {
+        const cell = tr.querySelector(".number-cell");
+
+        return cell
+            ? cell.textContent.trim()
+            : "";
+    }
+
+    ["2", "3", "4"].forEach(function (number) {
+
+        const startIndex = changeRows.findIndex(
+            tr => getChangeNumber(tr) === number
+        );
+
+        if (startIndex === -1) return;
+
+        const parent = changeRows[startIndex];
+
+        const nextIndex = changeRows.findIndex(
+            (tr, index) =>
+                index > startIndex &&
+                /^\d+$/.test(getChangeNumber(tr))
+        );
+
+        const children = changeRows.slice(
+            startIndex + 1,
+            nextIndex === -1
+                ? changeRows.length
+                : nextIndex
+        );
+
+        if (children.length === 0) return;
+
+        parent.classList.add("change-dropdown-parent");
+
+        const numberCell =
+            parent.querySelector(".number-cell");
+
+        if (!numberCell) return;
+
+        // Add dropdown arrow
+        const arrow = document.createElement("i");
+
+        arrow.className =
+            "fa-solid fa-chevron-down change-dropdown-arrow";
+
+        arrow.style.marginLeft = "10px";
+        arrow.style.color = "#203b84";
+
+        numberCell.appendChild(arrow);
+
+        // Handle merged cells (rowspan)
+        const mergedCells = Array.from(
+            parent.querySelectorAll("td[rowspan]")
+        );
+
+        const originalSpans = mergedCells.map(
+            cell => cell.getAttribute("rowspan")
+        );
+
+        // Hide department rows initially
+        children.forEach(tr => {
+            tr.style.display = "none";
+        });
+
+        mergedCells.forEach(cell => {
+            cell.setAttribute("rowspan", "1");
+        });
+
+        let isOpen = false;
+
+        parent.style.cursor = "pointer";
+
+        parent.addEventListener("click", function () {
+
+            isOpen = !isOpen;
+
+            children.forEach(tr => {
+                tr.style.display = isOpen ? "" : "none";
+            });
+
+            mergedCells.forEach((cell, index) => {
+                cell.setAttribute(
+                    "rowspan",
+                    isOpen
+                        ? originalSpans[index]
+                        : "1"
+                );
+            });
+
+            arrow.className = isOpen
+                ? "fa-solid fa-chevron-up change-dropdown-arrow"
+                : "fa-solid fa-chevron-down change-dropdown-arrow";
+        });
+
+    });
+
+}
 
 
     window.scrollTo({
@@ -4482,3 +4987,131 @@ document.addEventListener(
 
     }
 );
+
+
+/* ==========================================
+   KPI EXPAND / COLLAPSE DROPDOWN
+   FOR OVERALL ITIL KPI REGISTER
+========================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const kpiBody = document.getElementById("kpiBody");
+
+    if (!kpiBody) return;
+
+    function setupDropdown() {
+
+        const rows = Array.from(kpiBody.querySelectorAll("tr"));
+
+        // Reset dropdown every time KPI table changes
+        rows.forEach(tr => {
+            tr.style.removeProperty("display");
+        });
+
+        // Identify main KPI and child KPI
+        let mainNumber = "";
+        let parentRow = null;
+
+        rows.forEach(tr => {
+
+            const numberCell = tr.querySelector(".number-cell");
+
+            if (!numberCell) return;
+
+            const no = numberCell.textContent.trim();
+
+            // Main KPI: 1, 2, 3, 4 etc.
+            if (/^\d+$/.test(no)) {
+
+                mainNumber = no;
+                parentRow = tr;
+
+                tr.classList.add("kpi-dropdown-parent");
+
+                return;
+            }
+
+            // Child KPI: 1a, 2i, 2ii, 3a etc.
+            if (
+                mainNumber &&
+                no.startsWith(mainNumber) &&
+                no !== mainNumber
+            ) {
+
+                tr.classList.add("kpi-dropdown-child");
+                tr.dataset.parentKpi = mainNumber;
+
+                // Hide child initially
+                tr.style.display = "none";
+            }
+
+        });
+
+        // Add dropdown for main KPI with children
+        rows.forEach(tr => {
+
+            if (!tr.classList.contains("kpi-dropdown-parent")) {
+                return;
+            }
+
+            const numberCell = tr.querySelector(".number-cell");
+
+            if (!numberCell) return;
+
+            const no = numberCell.textContent.trim();
+
+            const children = rows.filter(row =>
+                row.classList.contains("kpi-dropdown-child") &&
+                row.dataset.parentKpi === no
+            );
+
+            if (children.length === 0) return;
+
+            // Avoid duplicate icons
+            const oldIcon =
+                tr.querySelector(".kpi-dropdown-icon");
+
+            if (oldIcon) oldIcon.remove();
+
+            const icon = document.createElement("i");
+            icon.className =
+                "fa-solid fa-chevron-down kpi-dropdown-icon";
+
+            numberCell.appendChild(icon);
+
+            tr.style.cursor = "pointer";
+
+            tr.onclick = function () {
+
+                const isOpen =
+                    tr.classList.toggle("kpi-dropdown-open");
+
+                children.forEach(child => {
+                    child.style.display = isOpen ? "" : "none";
+                });
+
+                icon.className = isOpen
+                    ? "fa-solid fa-chevron-up kpi-dropdown-icon"
+                    : "fa-solid fa-chevron-down kpi-dropdown-icon";
+            };
+
+        });
+    }
+
+    const observer = new MutationObserver(function () {
+        // Wait until the process table has been generated
+        if (kpiBody.children.length > 0) {
+            observer.disconnect();
+            setupDropdown();
+            observer.observe(kpiBody, {
+                childList: true
+            });
+        }
+    });
+
+    observer.observe(kpiBody, {
+        childList: true
+    });
+
+});
