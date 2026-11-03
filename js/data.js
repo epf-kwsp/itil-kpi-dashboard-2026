@@ -20,6 +20,181 @@ const PROCESS_DATA = [
         "target": "80%",
         "stretch": "90%"
       },
+       {
+        "no": "2i",
+        "kpi": "PFS",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+       {
+        "no": "2ii",
+        "kpi": "BDS",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2iii",
+        "kpi": "MIP",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2v",
+        "kpi": "EIP",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2vi",
+        "kpi": "CRIMS",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2vii",
+        "kpi": "EAGLE",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2viii",
+        "kpi": "FTP",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2ix",
+        "kpi": "WLA",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2x",
+        "kpi": "IDM",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xi",
+        "kpi": "SIAM",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xii",
+        "kpi": "AFIS",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xiii",
+        "kpi": "ECM",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xiv",
+        "kpi": "ESB",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xv",
+        "kpi": "i-Invest",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xvi",
+        "kpi": "Paymate",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xvii",
+        "kpi": "RPA",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xviii",
+        "kpi": "PMWIS",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xix",
+        "kpi": "ilindung",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+      {
+        "no": "2xx",
+        "kpi": "Network ( DC, SBWifi, VPN and branch)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+       {
+        "no": "2xxi",
+        "kpi": "Security Ops ( WAF, APT, IPS, Cloudflare",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+       {
+        "no": "2xxii",
+        "kpi": "Infra Platform ( DB)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+         {
+        "no": "2xxiii",
+        "kpi": "Infra Platform ( HCI)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+         {
+        "no": "2xxiv",
+        "kpi": "Infra Platform ( OLVM)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+         {
+        "no": "2xxv",
+        "kpi": "Infra Platform ( OCP)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
+         {
+        "no": "2xxvi",
+        "kpi": "Infra Platform ( iSeries)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
       {
         "no": "3",
         "kpi": "INC Tickets Customer Satisfaction (CSAT Rated 4 and 5 over total answered)",
@@ -753,11 +928,24 @@ const PROCESS_DATA = [
       }
     ]
   },
-  {
-    "name": "Service Level Management",
+ 
+{
+    "name": "Service Level Management (SLM) & Business Relationship Management (BRM)",
     "icon": "fa-handshake",
     "count": 4,
     "rows": [
+
+      /* ======================================
+         SERVICE LEVEL MANAGEMENT (SLM)
+      ====================================== */
+
+      {
+        "no": "",
+        "kpi": "SERVICE LEVEL MANAGEMENT (SLM)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
       {
         "no": "1",
         "kpi": "Average % of SLA performance for every Department & branches",
@@ -828,13 +1016,18 @@ const PROCESS_DATA = [
         "target": "100%",
         "stretch": "N/A"
       },
-    ]
-  },
-   {
-    "name": "Business Relationship Management",
-    "icon": "fa-handshake",
-    "count": 4,
-    "rows": [
+
+      /* ======================================
+         BUSINESS RELATIONSHIP MANAGEMENT (BRM)
+      ====================================== */
+
+      {
+        "no": "",
+        "kpi": "BUSINESS RELATIONSHIP MANAGEMENT (BRM)",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
+      },
       {
         "no": "4",
         "kpi": "Customer Satisfaction Survey (CSS) result",
@@ -892,7 +1085,8 @@ const PROCESS_DATA = [
         "stretch": "98%"
       }
     ]
-  },
+},
+
   {
     "name": "IT Security Management",
     "icon": "fa-shield-halved",
@@ -1117,14 +1311,14 @@ const PROCESS_DATA = [
     "rows": [
       {
         "no": "1",
-        "kpi": "Repeat Major Incidents After Fix (P1/P2) – Reporting by Division\nCount of P1/P2 incidents that recur within 90 days for the same service/component and same cause category, after corrective actions from the prior Problem were implemented and marked complete, as validated by the Problem Forum; final classification rests with the Problem Forum Chairperson (CDTO escalation if required).\n\nExplanation: (can remove after)\nCounts as repeat when:\n1. P1/P2\n2. within 90 days of the earlier one\n3. same service/component (define this as Service or CI)\n4. same cause category\n5. prior Problem action(s) status = Implemented/Closed (not “planned/in progress”)\n\nWhy?\n- Forces teams to care about whether fixes work, not just closing actions.",
+        "kpi": "Repeat Major Incidents After Fix (P1/P2) – Reporting by Division",
         "frequency": "Annually",
         "target": "2",
         "stretch": "1"
       },
       {
         "no": "2",
-        "kpi": "RCA Quality Pass Rate (Individual Pass Rate = ≥6/8)\n\n1. Timeline documented (what happened, when, impact window)\n2. Clear problem statement (service + user impact + scope)\n3. Root cause identified and written as a cause, not a symptom\n(the primary underlying cause (the “why it happened”)\n4. Evidence attached (logs, metrics, ticket refs, vendor note, change record, etc.)\n5. Contributing factors listed (at least 1 if applicable)\n(conditions that made it worse / allowed it through. e.g. Asking 5 whys))\n6. Corrective action(s) defined with owner + due date\n7. Prevent recurrence link: action(s) explicitly mapped to the root cause\n(Do the corrective actions actually address the root cause?)\n8. Validation plan stated (how we’ll confirm fix worked, e.g., monitoring, test, no-repeat window)\n\nWhy?\n- Forces teams to create a culture of understanding Proper Root Cause Analysis thinking",
+        "kpi": "RCA Quality Pass Rate (Individual Pass Rate = ≥6/8)",
         "frequency": "Annually",
         "target": "75% pass rate → roughly 15/20 RCAs pass\n(assuming 20 P1+P2)",
         "stretch": "85% pass rate → roughly 17/20 pass\n(assuming 20 P1+P2)"
@@ -1402,7 +1596,7 @@ const PROCESS_DATA = [
         "target": "100% by the next DR exercise",
         "stretch": "100% prior to the next DR exercise"
       },
-      {
+        {
         "no": "4",
         "kpi": "Number of reviews of BCM and ITSCM Plans planned and conducted within 12 month period (frequency of review of IT continuity plan)",
         "frequency": "1 time on BCM Plan",
@@ -1411,18 +1605,12 @@ const PROCESS_DATA = [
       },
       {
         "no": "",
-        "kpi": "",
-        "frequency": "1 time on ITSCM (DR) Plan",
-        "target": "1 time ITSCM (DR) Plan",
-        "stretch": "1 time on ITSCM Plan"
+        "kpi": "Data Resiliency",
+        "frequency": "",
+        "target": "",
+        "stretch": ""
       },
-      {
-        "no": "",
-        "kpi": "",
-        "frequency": "1 time on DR Procedures",
-        "target": "1 time on DR Procedures",
-        "stretch": "1 time on DR Procedure"
-      },
+    
     
       {
         "no": "5",
@@ -6998,6 +7186,7 @@ const RESULT_JANJUN = {
       "78.9%",
       "74.22%"
     ],
+    
     [
       "SLM/BRM",
       "1",
