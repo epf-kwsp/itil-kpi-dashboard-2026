@@ -65,19 +65,20 @@ function getResultData() {
    DASHBOARD
 ========================================================= */
 
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
 function loadDashboard() {
-    const dashboardBody =
-        document.getElementById("dashboardBody");
 
-    if (!dashboardBody) {
-        return;
-    }
-
+    // Get process data
     const processes = getProcessData();
 
-    const totalProcess =
-        processes.length;
+    // Total ITIL Processes
+    const totalProcess = 14;
 
+    // Calculate total KPI Groups
     const totalGroups =
         processes.reduce(
             (total, process) =>
@@ -85,6 +86,7 @@ function loadDashboard() {
             0
         );
 
+    // Calculate total KPI Rows
     const totalRows =
         processes.reduce(
             (total, process) =>
@@ -97,6 +99,10 @@ function loadDashboard() {
             0
         );
 
+
+    /* =====================================================
+       UPDATE DASHBOARD SUMMARY CARDS
+    ===================================================== */
 
     const statProcess =
         document.getElementById("statProcess");
@@ -120,6 +126,19 @@ function loadDashboard() {
         statRows.textContent = totalRows;
     }
 
+
+    /* =====================================================
+       DASHBOARD PROCESS TABLE
+    ===================================================== */
+
+    const dashboardBody =
+        document.getElementById("dashboardBody");
+
+    // Jangan hentikan kemas kini summary cards
+    // jika dashboardBody tiada pada halaman
+    if (!dashboardBody) {
+        return;
+    }
 
     dashboardBody.innerHTML = "";
 
@@ -161,6 +180,7 @@ function loadDashboard() {
         dashboardBody.appendChild(row);
 
     });
+
 }
 
 
@@ -1067,20 +1087,19 @@ if (process.name === "Capacity Management") {
 
         const cell = parent.querySelector(".number-cell");
 
-        if (!cell) return;
+       if (!cell || !children || children.length === 0) return;
 
-        parent.classList.add("capacity-dropdown-parent");
+parent.classList.add("capacity-dropdown-parent");
 
-        const arrow = document.createElement("i");
-        arrow.className = "fa-solid fa-chevron-down";
-        arrow.style.marginLeft = "10px";
+const arrow = document.createElement("i");
+arrow.className = "fa-solid fa-chevron-down";
+arrow.style.marginLeft = "10px";
 
-        cell.appendChild(arrow);
+cell.appendChild(arrow);
 
-        children.forEach(tr => {
-            tr.style.display = "none";
-        });
-
+children.forEach(tr => {
+    tr.style.display = "none";
+});
         let open = false;
 
         parent.addEventListener("click", function () {
@@ -4989,50 +5008,93 @@ document.addEventListener(
 );
 
 
+
 /* ==========================================
    KPI EXPAND / COLLAPSE DROPDOWN
-   FOR OVERALL ITIL KPI REGISTER
+   EXCLUDE INCIDENT & SERVICE REQUEST
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const kpiBody = document.getElementById("kpiBody");
+    const kpiBody =
+        document.getElementById("kpiBody");
 
     if (!kpiBody) return;
 
+    // Process yang tidak memerlukan dropdown
+    const noDropdownProcesses = [
+        "incident management",
+        "service request management",
+        "knowledge management",
+        "supplier management"
+    ];
+
     function setupDropdown() {
 
-        const rows = Array.from(kpiBody.querySelectorAll("tr"));
+        const titleElement =
+            document.getElementById("processTitle");
 
-        // Reset dropdown every time KPI table changes
+        const currentProcess =
+            titleElement
+                ? titleElement.textContent.trim().toLowerCase()
+                : "";
+
+        const rows = Array.from(
+            kpiBody.querySelectorAll(":scope > tr")
+        );
+
+        // Reset dropdown lama
         rows.forEach(tr => {
+
+            tr.classList.remove(
+                "kpi-dropdown-parent",
+                "kpi-dropdown-child",
+                "kpi-dropdown-open"
+            );
+
             tr.style.removeProperty("display");
+            tr.style.cursor = "";
+
+            tr.onclick = null;
+
+            delete tr.dataset.parentKpi;
+
+            const oldIcon =
+                tr.querySelector(".kpi-dropdown-icon");
+
+            if (oldIcon) {
+                oldIcon.remove();
+            }
+
         });
 
-        // Identify main KPI and child KPI
+        // Incident & Service Request tidak menggunakan dropdown
+        if (noDropdownProcesses.includes(currentProcess)) {
+            return;
+        }
+
+        // Kenal pasti KPI utama dan sub-KPI
         let mainNumber = "";
-        let parentRow = null;
 
         rows.forEach(tr => {
 
-            const numberCell = tr.querySelector(".number-cell");
+            const numberCell =
+                tr.querySelector(".number-cell");
 
             if (!numberCell) return;
 
-            const no = numberCell.textContent.trim();
+            const no =
+                numberCell.textContent.trim();
 
-            // Main KPI: 1, 2, 3, 4 etc.
+            // KPI utama: 1, 2, 3, 4
             if (/^\d+$/.test(no)) {
 
                 mainNumber = no;
-                parentRow = tr;
-
-                tr.classList.add("kpi-dropdown-parent");
 
                 return;
             }
 
-            // Child KPI: 1a, 2i, 2ii, 3a etc.
+            // Sub-KPI: 1a, 1b, 2i, 2ii dan sebagainya
             if (
                 mainNumber &&
                 no.startsWith(mainNumber) &&
@@ -5040,43 +5102,41 @@ document.addEventListener("DOMContentLoaded", function () {
             ) {
 
                 tr.classList.add("kpi-dropdown-child");
+
                 tr.dataset.parentKpi = mainNumber;
 
-                // Hide child initially
                 tr.style.display = "none";
             }
 
         });
 
-        // Add dropdown for main KPI with children
+        // Tambah dropdown hanya jika mempunyai sub-KPI
         rows.forEach(tr => {
 
-            if (!tr.classList.contains("kpi-dropdown-parent")) {
-                return;
-            }
-
-            const numberCell = tr.querySelector(".number-cell");
+            const numberCell =
+                tr.querySelector(".number-cell");
 
             if (!numberCell) return;
 
-            const no = numberCell.textContent.trim();
+            const no =
+                numberCell.textContent.trim();
 
             const children = rows.filter(row =>
                 row.classList.contains("kpi-dropdown-child") &&
                 row.dataset.parentKpi === no
             );
 
+            // Tiada sub-KPI = tiada dropdown
             if (children.length === 0) return;
 
-            // Avoid duplicate icons
-            const oldIcon =
-                tr.querySelector(".kpi-dropdown-icon");
-
-            if (oldIcon) oldIcon.remove();
+            tr.classList.add("kpi-dropdown-parent");
 
             const icon = document.createElement("i");
+
             icon.className =
                 "fa-solid fa-chevron-down kpi-dropdown-icon";
+
+            icon.style.marginLeft = "10px";
 
             numberCell.appendChild(icon);
 
@@ -5088,30 +5148,39 @@ document.addEventListener("DOMContentLoaded", function () {
                     tr.classList.toggle("kpi-dropdown-open");
 
                 children.forEach(child => {
-                    child.style.display = isOpen ? "" : "none";
+
+                    child.style.display =
+                        isOpen ? "" : "none";
+
                 });
 
                 icon.className = isOpen
                     ? "fa-solid fa-chevron-up kpi-dropdown-icon"
                     : "fa-solid fa-chevron-down kpi-dropdown-icon";
+
             };
 
         });
+
     }
 
+    // Pantau perubahan jadual KPI
     const observer = new MutationObserver(function () {
-        // Wait until the process table has been generated
+
         if (kpiBody.children.length > 0) {
-            observer.disconnect();
             setupDropdown();
-            observer.observe(kpiBody, {
-                childList: true
-            });
         }
+
     });
 
     observer.observe(kpiBody, {
         childList: true
     });
 
+    // Jika jadual sudah mempunyai data
+    if (kpiBody.children.length > 0) {
+        setupDropdown();
+    }
+
 });
+
