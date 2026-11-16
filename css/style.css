@@ -5346,3 +5346,12 @@ td .badge {
     font-size: 13px !important;
     font-weight: 400 !important;
 }
+/* ==========================================
+   GLOBAL FONT - ARIAL
+   APPLY TO ALL WEBSITE PAGES
+========================================== */
+
+body,
+body *:not(i):not(svg):not(path) {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
