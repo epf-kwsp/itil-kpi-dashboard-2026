@@ -4,18 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>KWSP | ITIL KPI Register 2026</title>
-
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ======================================
-           GENERAL
-        ====================================== */
-
         * {
             box-sizing: border-box;
         }
@@ -53,9 +46,7 @@
             overflow: visible !important;
         }
 
-        /* ======================================
-           TOPBAR
-        ====================================== */
+        /* TOPBAR */
 
         .topbar {
             display: flex;
@@ -103,9 +94,7 @@
             color: #ffffff;
         }
 
-        /* ======================================
-           CLICKABLE YEAR SELECTOR
-        ====================================== */
+        /* YEAR SELECTOR */
 
         .topbar .year.year-selector {
             position: relative;
@@ -147,34 +136,7 @@
             outline-offset: 2px;
         }
 
-        /* ======================================
-           MAIN CONTENT
-        ====================================== */
-
-        .content {
-            width: 100% !important;
-            max-width: 100% !important;
-            padding: 30px 35px 45px;
-            margin: 0 !important;
-            overflow: visible !important;
-        }
-
-        #processList,
-        #processDetail {
-            width: 100%;
-            max-width: 100%;
-        }
-
-        #processDetail {
-            display: none;
-            position: relative;
-            padding-bottom: 35px;
-            overflow: visible !important;
-        }
-
-        /* ======================================
-           HERO BANNER WITH LOGO
-        ====================================== */
+        /* HERO BANNER */
 
         .overall-hero {
             position: relative;
@@ -184,17 +146,16 @@
             gap: 30px;
             min-height: 210px;
             padding: 35px 38px;
+            margin-top: 30px;
             margin-bottom: 24px;
             overflow: hidden;
             border-radius: 20px;
-
             background: linear-gradient(
                 135deg,
                 #142e6d 0%,
                 #204895 60%,
                 #2e61b7 100%
             );
-
             box-shadow: 0 12px 30px rgba(23,59,130,0.15);
             color: #ffffff;
         }
@@ -303,10 +264,34 @@
             font-size: 10px;
         }
 
-        /* ======================================
-           NEW SUMMARY CARDS
-           ITIL PROCESSES + REPORTING PERIOD
-        ====================================== */
+        #overallHero[hidden] {
+            display: none !important;
+        }
+
+        /* MAIN CONTENT */
+
+        .content {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 30px 35px 45px;
+            margin: 0 !important;
+            overflow: visible !important;
+        }
+
+        #processList,
+        #processDetail {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #processDetail {
+            display: none;
+            position: relative;
+            padding-bottom: 35px;
+            overflow: visible !important;
+        }
+
+        /* SUMMARY CARDS */
 
         .overall-summary {
             display: grid;
@@ -322,11 +307,9 @@
             min-width: 0;
             min-height: 112px;
             padding: 22px;
-
             background: #ffffff;
             border: 1px solid #dfe6f2;
             border-radius: 18px;
-
             box-shadow: 0 7px 20px rgba(15,43,89,0.06);
             transition: 0.2s ease;
         }
@@ -380,9 +363,7 @@
             font-size: 10px;
         }
 
-        /* ======================================
-           PROCESS SEARCH
-        ====================================== */
+        /* PROCESS SEARCH */
 
         .section-tools {
             display: flex;
@@ -438,9 +419,7 @@
             box-shadow: 0 0 0 3px rgba(53,101,192,0.08);
         }
 
-        /* ======================================
-           PROCESS CARDS
-        ====================================== */
+        /* PROCESS CARDS */
 
         .process-grid {
             display: grid;
@@ -452,9 +431,7 @@
             min-width: 0;
         }
 
-        /* ======================================
-           KPI DETAILS - BACK BUTTON
-        ====================================== */
+        /* KPI DETAILS - BACK BUTTON */
 
         #processDetail .sticky-back-bar {
             position: sticky !important;
@@ -497,9 +474,7 @@
             display: none !important;
         }
 
-        /* ======================================
-           KPI PROCESS BANNER
-        ====================================== */
+        /* KPI PROCESS BANNER */
 
         #processDetail .kpi-process-banner {
             display: flex !important;
@@ -585,9 +560,7 @@
             font-weight: 800;
         }
 
-        /* ======================================
-           KPI TABLE
-        ====================================== */
+        /* KPI TABLE */
 
         .kpi-detail-panel {
             width: 100%;
@@ -679,9 +652,7 @@
             vertical-align: middle !important;
         }
 
-        /* ======================================
-           NO DATA 2027
-        ====================================== */
+        /* NO DATA 2027 */
 
         #overall2026[hidden],
         #noYearData[hidden] {
@@ -729,10 +700,6 @@
             background: #3458b0;
         }
 
-        /* ======================================
-           FOOTER
-        ====================================== */
-
         main > footer {
             padding: 20px 35px;
             color: #71809b;
@@ -740,9 +707,7 @@
             text-align: center;
         }
 
-        /* ======================================
-           RESPONSIVE
-        ====================================== */
+        /* RESPONSIVE */
 
         @media (max-width: 1100px) {
             .process-grid {
@@ -832,150 +797,208 @@
                 padding: 55px 20px;
             }
         }
-        
-/* ==========================================
-   INCIDENT MANAGEMENT
-   KPI 1, 2, 3 = BIRU MUDA
-   ANAK KPI 2i, 2ii, 2iii = PUTIH
+
+        /* INCIDENT MANAGEMENT */
+
+        #processDetail .kpi-detail-table tbody tr:has(
+            > td.number-cell .number-badge
+        ) > td {
+            background-color: #e8f0ff !important;
+        }
+
+        #processDetail .kpi-detail-table tbody tr:has(
+            > td.number-cell .number-badge
+        ) > td {
+            background-color: #ffffff !important;
+        }
+
+        #processDetail .kpi-detail-table tbody tr:nth-child(1) > td,
+        #processDetail .kpi-detail-table tbody tr:nth-child(2) > td,
+        #processDetail .kpi-detail-table tbody tr:last-child > td {
+            background-color: #e8f0ff !important;
+        }
+
+        #processDetail .kpi-detail-table tbody tr.group-row > td {
+            border-bottom: none !important;
+        }
+
+        #processDetail .kpi-detail-table tbody tr.group-row > td {
+            background-color: #e8f0ff !important;
+        }
+
+        #processDetail .kpi-detail-table tbody td.kpi-name,
+        #processDetail .kpi-detail-table tbody td.kpi-name * {
+            color: #000000 !important;
+        }
+
+        #processDetail .kpi-detail-table
+        tbody tr.kpi-main-row > td {
+            background-color: #ffffff !important;
+        }
+
+        #processDetail .kpi-detail-table
+        tbody tr.kpi-main-row > td.kpi-main-name {
+            background-color: #e8f0ff !important;
+        }
+
+        #processDetail .kpi-detail-table
+        tbody tr.kpi-department-row > td {
+            background-color: #ffffff !important;
+        }
+
+        #processDetail .slm-brm-heading-row td,
+        #processDetail .slm-brm-heading-row td * {
+            font-size: 13px !important;
+            font-weight: 700 !important;
+        }
+
+        #processDetail .data-resiliency-heading > td {
+            background: #f8faff !important;
+            border-top: 14px solid #f4f7fc !important;
+            border-bottom: 1px solid #dce5f4 !important;
+            padding: 16px 20px !important;
+            color: #000000 !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+        }
+
+        #processDetail .data-resiliency-heading > td * {
+            color: #000000 !important;
+            font-size: 13px !important;
+        }
+
+        /* CAPACITY MANAGEMENT DROPDOWN */
+
+        #processDetail .capacity-dropdown-parent {
+            cursor: pointer;
+        }
+/* MAKE ALL KPI TABLE ROWS SAME HEIGHT */
+
+#processDetail .kpi-detail-table tbody tr > td {
+    height: 68px !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    vertical-align: middle !important;
+}
+        #processDetail .capacity-dropdown-parent > td {
+            background: #e8f0ff !important;
+            color: #000000 !important;
+            font-weight: 700;
+        }
+
+        #processDetail .capacity-dropdown-parent:hover > td {
+            background: #dce9ff !important;
+        }
+
+        #processDetail .capacity-dropdown-parent i {
+            color: #203b84 !important;
+            font-size: 12px;
+        }
+
+        /* CHANGE & RELEASE DROPDOWN */
+
+        #processDetail .change-parent-blue > td {
+            background: #dce9ff !important;
+            border-top: 1px solid #b7caee;
+            border-bottom: 1px solid #b7caee;
+        }
+
+        #processDetail .change-parent-blue td {
+            color: #000 !important;
+            font-weight: 500;
+        }
+
+        #processDetail .change-parent-blue:hover > td {
+            background: #d3e2fb !important;
+        }
+
+        #processDetail .change-parent-blue .change-dropdown-arrow {
+            color: #203b84 !important;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+        /* ==========================================
+   CHANGE & RELEASE MANAGEMENT
+   REMOVE LINE BETWEEN KPI 3 AND KPI 4
 ========================================== */
 
-/* Warna biru untuk KPI utama */
-#processDetail .kpi-detail-table tbody tr:has(
-    > td.number-cell .number-badge
-) > td {
-    background-color: #e8f0ff !important;
-}
-
-/* Anak KPI nombor 2 kekal putih */
-#processDetail .kpi-detail-table tbody tr:has(
-    > td.number-cell .number-badge
-) > td {
-    background-color: #ffffff !important;
-}
-
-/* KPI 1, 2 dan 3 */
-#processDetail .kpi-detail-table tbody tr:nth-child(1) > td,
-#processDetail .kpi-detail-table tbody tr:nth-child(2) > td,
-#processDetail .kpi-detail-table tbody tr:last-child > td {
-    background-color: #e8f0ff !important;
-}
-
-/* Buang garis biru bawah KPI No. 2 */
-
-#processDetail .kpi-detail-table tbody tr.group-row > td {
+#processDetail .kpi-detail-table tbody
+tr.change-row-3 > td {
     border-bottom: none !important;
 }
 
-/* Kekalkan warna biru muda */
-#processDetail .kpi-detail-table tbody tr.group-row > td {
-    background-color: #e8f0ff !important;
+#processDetail .kpi-detail-table tbody
+tr.change-row-4 > td {
+    border-top: none !important;
 }
 
-/* Tukar tulisan KPI kepada hitam */
+/* ONE DROPDOWN ARROW ONLY */
 
-#processDetail .kpi-detail-table tbody td.kpi-name,
-#processDetail .kpi-detail-table tbody td.kpi-name * {
-    color: #000000 !important;
-}
-
-/* Change & Release - hanya baris tajuk biru */
-
-#processDetail .kpi-detail-table
-tbody tr.kpi-main-row > td {
-    background-color: #ffffff !important;
-}
-
-/* Tajuk utama KPI 2 dan 3 */
-#processDetail .kpi-detail-table
-tbody tr.kpi-main-row > td.kpi-main-name {
-    background-color: #e8f0ff !important;
-}
-
-/* Department kekal putih */
-#processDetail .kpi-detail-table
-tbody tr.kpi-department-row > td {
-    background-color: #ffffff !important;
-}
-
-/* Kecilkan tulisan tajuk SLM & BRM */
-
-#processDetail .slm-brm-heading-row td,
-#processDetail .slm-brm-heading-row td * {
-    font-size: 13px !important;
-    font-weight: 700 !important;
-}
-
-/* ==========================================
-   ITSCM & DATA RESILIENCY SECTION TITLE
-========================================== */
-
-#processDetail .data-resiliency-heading > td {
-    background: #f8faff !important;
-    border-top: 14px solid #f4f7fc !important;
-    border-bottom: 1px solid #dce5f4 !important;
-    padding: 16px 20px !important;
-    color: #000000 !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-}
-
-#processDetail .data-resiliency-heading > td * {
-    color: #000000 !important;
-    font-size: 13px !important;
-}
-
-/* CAPACITY MANAGEMENT DROPDOWN */
-
-#processDetail .capacity-dropdown-parent {
-    cursor: pointer;
-}
-
-#processDetail .capacity-dropdown-parent > td {
-    background: #e8f0ff !important;
-    color: #000000 !important;
-    font-weight: 700;
-}
-
-#processDetail .capacity-dropdown-parent:hover > td {
-    background: #dce9ff !important;
-}
-
-#processDetail .capacity-dropdown-parent i {
+#processDetail .change-dropdown-arrow {
+    margin-left: 10px !important;
     color: #203b84 !important;
-    font-size: 12px;
-}
-/* Parent row biru untuk Change & Release dropdown */
-#processDetail .change-parent-blue > td {
-    background: #dce9ff !important;
-    border-top: 1px solid #b7caee;
-    border-bottom: 1px solid #b7caee;
+    font-size: 12px !important;
 }
 
-/* tulisan dalam row biru */
-#processDetail .change-parent-blue td {
-    color: #000 !important;
-    font-weight: 500;
-}
+/* HIDDEN CHILD ROWS */
 
-/* hover effect */
-#processDetail .change-parent-blue:hover > td {
-    background: #d3e2fb !important;
+#processDetail .change-dropdown-hidden {
+    display: none !important;
 }
-
-/* arrow dropdown */
-#processDetail .change-parent-blue .change-dropdown-arrow {
-    color: #203b84 !important;
-    font-size: 12px;
-    margin-left: 8px;
-}
-
     </style>
 </head>
 
 <body>
 
 <div class="app">
+
     <main>
+
+        <!-- BANNER BIRU DI BAHAGIAN PALING ATAS -->
+
+        <div class="overall-hero" id="overallHero">
+
+            <div class="overall-hero-left">
+
+                <img
+                    src="images/kwsp-epf.png"
+                    alt="KWSP EPF Logo"
+                    class="overall-hero-logo"
+                >
+
+                <div class="hero-logo-divider"></div>
+
+                <div class="overall-hero-content">
+
+                    <span class="hero-label">
+                        ITIL PERFORMANCE MANAGEMENT
+                    </span>
+
+                    <h2>
+                        KPI Register &amp; Process Overview
+                    </h2>
+
+                    <p>
+                        Explore ITIL processes, KPI definitions,
+                        reporting frequency, targets and
+                        stretch targets.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="hero-year">
+
+                <i class="fa-regular fa-calendar-check"></i>
+
+                <strong>2026</strong>
+
+                <span>REPORTING YEAR</span>
+
+            </div>
+
+        </div>
 
         <!-- TOP BAR -->
 
@@ -983,12 +1006,9 @@ tbody tr.kpi-department-row > td {
 
             <div class="topbar-title">
 
-             
                 <h1>ITIL KPI REFERENCE LIST</h1>
 
             </div>
-
-            <!-- YEAR DROPDOWN -->
 
             <div class="topbar-right">
 
@@ -998,8 +1018,10 @@ tbody tr.kpi-department-row > td {
 
                     <span id="selectedYearLabel">2026</span>
 
-                    <select id="yearSelect"
-                            aria-label="Select reporting year">
+                    <select
+                        id="yearSelect"
+                        aria-label="Select reporting year"
+                    >
                         <option value="2026" selected>2026</option>
                         <option value="2027">2027</option>
                     </select>
@@ -1007,14 +1029,18 @@ tbody tr.kpi-department-row > td {
                     <i class="fa-solid fa-chevron-down"></i>
 
                 </div>
+
             </div>
+
         </header>
 
         <!-- NO DATA PAGE -->
 
-        <section id="noYearData"
-                 class="no-year-data"
-                 hidden>
+        <section
+            id="noYearData"
+            class="no-year-data"
+            hidden
+        >
 
             <i class="fa-regular fa-calendar-xmark"></i>
 
@@ -1039,57 +1065,7 @@ tbody tr.kpi-department-row > td {
 
             <div id="processList">
 
-                <!-- ==================================
-                     HERO BANNER WITH LOGO
-                ================================== -->
-
-                <div class="overall-hero">
-
-                    <div class="overall-hero-left">
-
-                        <img
-                            src="images/kwsp-epf.png"
-                            alt="KWSP EPF Logo"
-                            class="overall-hero-logo"
-                        >
-
-                        <div class="hero-logo-divider"></div>
-
-                        <div class="overall-hero-content">
-
-                            <span class="hero-label">
-                                ITIL PERFORMANCE MANAGEMENT
-                            </span>
-
-                            <h2>
-                                KPI Register &amp; Process Overview
-                            </h2>
-
-                            <p>
-                                Explore ITIL processes, KPI definitions,
-                                reporting frequency, targets and
-                                stretch targets.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="hero-year">
-
-                        <i class="fa-regular fa-calendar-check"></i>
-
-                        <strong>2026</strong>
-
-                        <span>REPORTING YEAR</span>
-
-                    </div>
-
-                </div>
-
-                <!-- ==================================
-                     NEW SUMMARY CARDS
-                ================================== -->
+                <!-- SUMMARY CARDS -->
 
                 <div class="overall-summary">
 
@@ -1108,7 +1084,7 @@ tbody tr.kpi-department-row > td {
                             <small>ITIL Processes</small>
 
                             <strong id="overallProcessCount">
-                                15
+                                14
                             </strong>
 
                             <span>ITIL KPI Register 2026</span>
@@ -1141,9 +1117,7 @@ tbody tr.kpi-department-row > td {
 
                 </div>
 
-                <!-- ==================================
-                     PROCESS SEARCH
-                ================================== -->
+                <!-- PROCESS SEARCH -->
 
                 <div class="section-tools">
 
@@ -1175,17 +1149,19 @@ tbody tr.kpi-department-row > td {
 
                 <!-- PROCESS CARDS FROM SCRIPT.JS -->
 
-                <div id="processGrid"
-                     class="process-grid"></div>
+                <div
+                    id="processGrid"
+                    class="process-grid"
+                ></div>
 
             </div>
 
-            <!-- ==================================
-                 KPI DETAIL PAGE
-            ================================== -->
+            <!-- KPI DETAIL PAGE -->
 
-            <div id="processDetail"
-                 class="process-detail">
+            <div
+                id="processDetail"
+                class="process-detail"
+            >
 
                 <!-- BACK TO PROCESS -->
 
@@ -1291,7 +1267,9 @@ tbody tr.kpi-department-row > td {
                         <table class="kpi-detail-table">
 
                             <thead>
+
                                 <tr>
+
                                     <th class="col-number">
                                         No.
                                     </th>
@@ -1311,10 +1289,10 @@ tbody tr.kpi-department-row > td {
                                     <th class="col-stretch">
                                         Stretch Target
                                     </th>
-                                </tr>
-                            </thead>
 
-                            <!-- DATA GENERATED BY JS -->
+                                </tr>
+
+                            </thead>
 
                             <tbody id="kpiBody"></tbody>
 
@@ -1333,18 +1311,15 @@ tbody tr.kpi-department-row > td {
         </footer>
 
     </main>
+
 </div>
 
-<!-- ======================================
-     ORIGINAL JAVASCRIPT
-====================================== -->
+<!-- ORIGINAL JAVASCRIPT -->
 
 <script src="js/data.js"></script>
 <script src="js/script.js"></script>
 
-<!-- ======================================
-     SUMMARY PROCESS COUNT
-====================================== -->
+<!-- SUMMARY PROCESS COUNT -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -1357,15 +1332,13 @@ document.addEventListener("DOMContentLoaded", function () {
         typeof PROCESS_DATA !== "undefined" &&
         Array.isArray(PROCESS_DATA)
     ) {
-        count.textContent = PROCESS_DATA.length;
+        count.textContent = 14;
     }
 
 });
 </script>
 
-<!-- ======================================
-     KPI DETAIL LAYOUT OBSERVER
-====================================== -->
+<!-- KPI DETAIL LAYOUT OBSERVER -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -1414,9 +1387,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<!-- ======================================
-     YEAR SELECTION
-====================================== -->
+<!-- YEAR SELECTION -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -1445,26 +1416,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const hasData = year === "2026";
 
+        const overallHero =
+            document.getElementById("overallHero");
+
+        overallHero.hidden = !hasData;
+
         overall2026.hidden = !hasData;
+
         noYearData.hidden = hasData;
 
         if (!hasData) {
+
             noYearTitle.textContent =
                 "No KPI Data Available for " + year;
 
             document.body.classList.remove(
                 "kpi-detail-mode"
             );
+
         }
+
     }
 
     yearSelect.addEventListener("change", function () {
+
         showSelectedYear(yearSelect.value);
+
     });
 
     backButton.addEventListener("click", function () {
+
         yearSelect.value = "2026";
+
         showSelectedYear("2026");
+
     });
 
     showSelectedYear(yearSelect.value);
@@ -1473,9 +1458,9 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <!-- SLM & BRM SECTION DESIGN -->
+
 <style>
 
-/* Section title row */
 #processDetail .slm-brm-heading-row > td {
     background: #203b84 !important;
     color: #ffffff !important;
@@ -1486,36 +1471,30 @@ document.addEventListener("DOMContentLoaded", function () {
     font-weight: 800 !important;
 }
 
-/* Make the title text white */
 #processDetail .slm-brm-heading-row td,
 #processDetail .slm-brm-heading-row td * {
     color: #ffffff !important;
 }
 
-/* Hide the dash in the first column */
 #processDetail .slm-brm-heading-row
 td:first-child {
     color: transparent !important;
 }
 
-/* Main KPI rows */
 #processDetail .slm-brm-main-row > td {
     background: #e8f0ff !important;
     color: #000000 !important;
 }
 
-/* Main KPI text */
 #processDetail .slm-brm-main-row td * {
     color: #000000 !important;
 }
 
-/* Child KPI rows */
 #processDetail .slm-brm-child-row > td {
     background: #ffffff !important;
     color: #000000 !important;
 }
 
-/* Section transition */
 #processDetail .slm-brm-heading-row {
     box-shadow: 0 -3px 12px rgba(32,59,132,0.05);
 }
@@ -1565,7 +1544,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 ? numberCell.textContent.trim()
                 : "";
 
-            // SLM and BRM title rows
             if (
                 text.includes("SERVICE LEVEL MANAGEMENT (SLM)") ||
                 text.includes("BUSINESS RELATIONSHIP MANAGEMENT (BRM)")
@@ -1574,16 +1552,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Main KPI 1, 2, 3 and 4
             if (["1", "2", "3", "4"].includes(no)) {
                 tr.classList.add("slm-brm-main-row");
                 return;
             }
 
-            // Child KPI
             tr.classList.add("slm-brm-child-row");
 
         });
+
     }
 
     const observer = new MutationObserver(styleSLMBRM);
@@ -1604,7 +1581,6 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- CHANGE & RELEASE MANAGEMENT DROPDOWN -->
 
 <style>
-/* KPI 2, 3, 4 clickable rows */
 
 #processDetail .change-dropdown-parent {
     cursor: pointer;
@@ -1624,12 +1600,13 @@ document.addEventListener("DOMContentLoaded", function () {
     font-size: 12px;
 }
 
-/* Hide department rows */
-
 #processDetail tr.change-dropdown-hidden {
     display: none !important;
 }
+
 </style>
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -1640,11 +1617,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function setupChangeDropdown() {
 
-        const title =
-            document.getElementById("bannerProcessTitle");
+        const title = document.getElementById(
+            "bannerProcessTitle"
+        );
 
         if (
-            title?.textContent.trim() !==
+            !title ||
+            title.textContent.trim() !==
             "Change & Release Management"
         ) {
             return;
@@ -1655,12 +1634,38 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         function getNumber(tr) {
+
             const cell = tr.querySelector(".number-cell");
 
             return cell
                 ? cell.textContent.trim()
                 : "";
+
         }
+
+        /* =====================================
+           REMOVE LINE BETWEEN KPI 3 AND KPI 4
+        ===================================== */
+
+        const row3 = rows.find(
+            tr => getNumber(tr) === "3"
+        );
+
+        const row4 = rows.find(
+            tr => getNumber(tr) === "4"
+        );
+
+        if (row3) {
+            row3.classList.add("change-row-3");
+        }
+
+        if (row4) {
+            row4.classList.add("change-row-4");
+        }
+
+        /* =====================================
+           KPI 2, 3 AND 4 DROPDOWN
+        ===================================== */
 
         ["2", "3", "4"].forEach(function (number) {
 
@@ -1668,17 +1673,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 tr => getNumber(tr) === number
             );
 
-            if (startIndex < 0) return;
+            if (startIndex === -1) return;
 
             const parent = rows[startIndex];
 
-            if (
-                parent.classList.contains(
-                    "change-dropdown-parent"
-                )
-            ) {
-                return;
-            }
+            const numberCell =
+                parent.querySelector(".number-cell");
+
+            if (!numberCell) return;
+
+            /* Find child KPI rows */
 
             const nextIndex = rows.findIndex(
                 (tr, index) =>
@@ -1693,23 +1697,66 @@ document.addEventListener("DOMContentLoaded", function () {
                     : nextIndex
             );
 
-            if (!children.length) return;
+            if (children.length === 0) return;
+
+            /* =================================
+               PREVENT DUPLICATE ARROWS
+            ================================= */
+
+            const oldArrows = Array.from(
+                numberCell.querySelectorAll(
+                    ".change-dropdown-arrow, " +
+                    ".kpi-dropdown-icon, " +
+                    "i.fa-chevron-down, " +
+                    "i.fa-chevron-up"
+                )
+            );
+
+            let arrow = oldArrows.find(
+                icon => icon.classList.contains(
+                    "change-dropdown-arrow"
+                )
+            );
+
+            oldArrows.forEach(function (icon) {
+
+                if (icon !== arrow) {
+                    icon.remove();
+                }
+
+            });
+
+            if (!arrow) {
+
+                arrow = document.createElement("i");
+
+                arrow.className =
+                    "fa-solid fa-chevron-down change-dropdown-arrow";
+
+                arrow.style.marginLeft = "10px";
+
+                numberCell.appendChild(arrow);
+
+            }
 
             parent.classList.add(
                 "change-dropdown-parent"
             );
 
-            const numberCell =
-                parent.querySelector(".number-cell");
+            /* =================================
+               PREVENT DUPLICATE EVENT LISTENER
+            ================================= */
 
-            const arrow = document.createElement("i");
+            if (
+                parent.dataset.changeDropdownBound === "true"
+            ) {
+                return;
+            }
 
-            arrow.className =
-                "fa-solid fa-chevron-down change-dropdown-arrow";
+            parent.dataset.changeDropdownBound = "true";
 
-            numberCell.appendChild(arrow);
+            /* Save merged cells */
 
-            // For merged cells, remove rowspan when collapsed
             const mergedCells = Array.from(
                 parent.querySelectorAll("td[rowspan]")
             );
@@ -1718,47 +1765,83 @@ document.addEventListener("DOMContentLoaded", function () {
                 cell => cell.getAttribute("rowspan")
             );
 
-            children.forEach(tr => {
-                tr.classList.add("change-dropdown-hidden");
+            /* Hide child rows initially */
+
+            children.forEach(function (tr) {
+
+                tr.classList.add(
+                    "change-dropdown-hidden"
+                );
+
+                tr.style.display = "none";
+
             });
 
-            mergedCells.forEach(cell => {
+            /* Reset rowspan */
+
+            mergedCells.forEach(function (cell) {
+
                 cell.setAttribute("rowspan", "1");
+
             });
 
             let isOpen = false;
+
+            parent.style.cursor = "pointer";
+
+            /* =================================
+               OPEN / CLOSE DROPDOWN
+            ================================= */
 
             parent.addEventListener("click", function () {
 
                 isOpen = !isOpen;
 
-                children.forEach(tr => {
+                children.forEach(function (tr) {
+
                     tr.classList.toggle(
                         "change-dropdown-hidden",
                         !isOpen
                     );
+
+                    tr.style.display =
+                        isOpen ? "" : "none";
+
                 });
 
-                mergedCells.forEach((cell, index) => {
+                /* Restore rowspan */
+
+                mergedCells.forEach(function (cell, index) {
+
                     cell.setAttribute(
                         "rowspan",
                         isOpen
                             ? originalSpans[index]
                             : "1"
                     );
+
                 });
+
+                /* Change arrow icon */
 
                 arrow.className = isOpen
                     ? "fa-solid fa-chevron-up change-dropdown-arrow"
                     : "fa-solid fa-chevron-down change-dropdown-arrow";
+
             });
 
         });
+
     }
 
-    // Detect newly rendered KPI rows
+    /* =====================================
+       OBSERVE KPI TABLE CHANGES
+    ===================================== */
+
     const observer = new MutationObserver(function () {
+
         setupChangeDropdown();
+
     });
 
     observer.observe(tbody, {
@@ -1769,6 +1852,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
+
 
 </body>
 </html>
